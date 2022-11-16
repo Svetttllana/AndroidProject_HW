@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AndroidProject_HW</string>
+    <string name="Text1">it is first View</string>
+   <string name="Text2">\" it is secondt View\"</string>
+    <string name="title2">Clicked secomd item</string>-->
+<!--    <string name="title2">Clicked second item</string>-->
+
+
 </resources>
