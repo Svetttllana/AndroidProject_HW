@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+    <style name="MyButton" parent="Widget.AppCompat.Button">
+
+        <item name="android:textColor">"#8463f6"</item>
+<item name="android:textSize">30sp</item>
+
+
+
+
+    </style>
+
+
+</resources>
