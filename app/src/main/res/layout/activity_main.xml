@@ -4,15 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b47393"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edTex_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/enter_your_login"
+            android:textColor="@color/black"
+            android:textStyle="italic" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:passwordToggleEnabled="true"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-27dp"
+        tools:layout_editor_absoluteY="257dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edTex_password"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="36dp"
+
+            android:hint="@string/enter_your_password"
+            android:textStyle="italic" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/bt_displayText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginTop="93dp"
+        android:layout_marginBottom="359dp"
+        android:text="@string/display_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edTex_password"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        tools:ignore="NotSibling" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="265dp"
+        android:gravity="center"
+        android:text="@string/name_and_password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_displayText"
+        tools:layout_editor_absoluteX="141dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
