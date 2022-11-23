@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Main Android Home Work</string>
     <string name="display_text">DISPLAY TEXT</string>
     <string name="enter_your_password">enter your password</string>
@@ -6,6 +6,10 @@
     <string name="name_and_password">Name and password</string>
     <string name="LogCantBeEmpty">login cant be empty</string>
     <string name="PassCantBeEmpty">\" Password cant be Empty\"</string>
+
+    <string name="sign_in">sign in</string>
+    <string name="login_cant_be_empty">login cany be empty</string>
+    <string name="password_cant_be_empty">password cant be empty</string>
 
 
 </resources>
