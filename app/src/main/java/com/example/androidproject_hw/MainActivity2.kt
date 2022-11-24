@@ -16,7 +16,7 @@ class MainActivity2 : AppCompatActivity() {
         val rb1 = findViewById<RadioButton>(R.id.rb1)
         val rb2 = findViewById<RadioButton>(R.id.rb2)
         val ImageView = findViewById<ImageView>(R.id.imgV)
-        ImageView.setImageResource(R.drawable.little_dog_image)
+        ImageView.setImageResource(R.drawable.bigdog_image)
 
         rb1.setOnClickListener {
             if (rb1.isChecked) {

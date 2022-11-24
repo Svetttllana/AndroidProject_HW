@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="400dp"
     android:layout_height="500dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
     tools:context=".MainActivity2">
 
 
@@ -17,22 +19,22 @@
         android:text="first RB"
         />
 
+
     <RadioButton
         android:id="@+id/rb2"
         android:layout_width="92dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="200dp"
-        android:textColor="#BA65132B"
-        android:text="sec RB" />
-
+        android:text="sec RB"
+        android:textColor="#BA65132B" />
 
     <ImageView
         android:id="@+id/imgV"
-        android:layout_width="129dp"
-        android:layout_height="100dp"
+        android:layout_width="173dp"
+        android:layout_height="139dp"
 
-        android:src="@drawable/little_dog_image"/>
+        android:src="@drawable/bigdog_image" />
 
 
 </androidx.cardview.widget.CardView>

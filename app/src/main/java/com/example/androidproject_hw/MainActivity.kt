@@ -25,7 +25,15 @@ class MainActivity : AppCompatActivity() {
         val layoutLog = findViewById<TextInputLayout>(R.id.layoutLogin)
         val layoutPassword = findViewById<TextInputLayout>(R.id.layoutPassword)
 
+
+        val human = HumanBuilder.Builder
+            .setArm(2)
+            .setLeg(2)
+            .setBrain(true)
+            .build()
         btn_Sign.setOnClickListener {
+
+            Log.w("HumanBuilder", "${human.hasArm()} ${human.hasLeg()} ${human.hasBrain()}")
 
             if (Et_login.text.toString().isEmpty() && Et_password.text.toString().isEmpty()) {
                 layoutLog.error = getString(R.string.login_cant_be_empty)
