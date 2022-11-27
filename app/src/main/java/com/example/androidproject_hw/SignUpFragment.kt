@@ -50,7 +50,7 @@ class SignUpFragment : Fragment() {
 
                 val dialog = AlertDialog.Builder(context)
                     .setTitle("Information")
-                    .setMessage("you are successfully registered")
+                    .setMessage(getString(R.string.Successfully_registrated))
                     .setCancelable(true)
                     .setPositiveButton("Ok") { dialog, _ ->
                         dialog.cancel()

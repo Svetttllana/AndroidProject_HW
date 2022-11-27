@@ -12,8 +12,11 @@
         android:id="@+id/layout_login"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="299dp">
+        app:layout_constraintBottom_toTopOf="@+id/layout_password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.795"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edTex_login"
@@ -33,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321"
+        app:layout_constraintVertical_bias="0.39"
         app:passwordToggleEnabled="true"
         tools:ignore="MissingConstraints">
 
@@ -42,9 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
 
+            android:layout_marginBottom="32dp"
             android:hint="@string/enter_your_password"
-            android:textStyle="italic"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="italic" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -62,19 +65,22 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+
         android:gravity="center"
-
         android:text="YOUR ARE ON LOGIN FRAGMENT"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegestration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Regestration"
+        android:text="Sign up"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

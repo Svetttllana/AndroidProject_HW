@@ -7,4 +7,5 @@
     <string name="sign_in">Sign in</string>
     <string name="PassCantBeEmpty">Password cant be empty</string>
     <string name="LogCantBeEmpty">Login cant be empty</string>
+    <string name="Successfully_registrated">you are successfully registered</string>
 </resources>
