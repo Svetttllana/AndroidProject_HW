@@ -57,6 +57,7 @@ class SignUpFragment : Fragment() {
                     }
                     .setNegativeButton("cancel") { dialog, _ -> dialog.cancel() }
                 dialog.show()
+
             }
         }
     }
