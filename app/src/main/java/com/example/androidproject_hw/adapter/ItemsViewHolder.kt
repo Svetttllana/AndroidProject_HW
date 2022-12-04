@@ -25,7 +25,7 @@ class ItemsViewHolder(
         val title = view.findViewById<TextView>(R.id.tv_title)
         val imageView = view.findViewById<ImageView>(R.id.iv_image)
         val time = view.findViewById<TextView>(R.id.tv_time)
-       // val description = view.findViewById<TextView>(R.id.detailsDescription)
+
 
         title.text = itemsModel.title
         imageView.setBackgroundResource(itemsModel.image)
