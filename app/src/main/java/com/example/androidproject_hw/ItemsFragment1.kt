@@ -21,6 +21,10 @@ import java.util.*
 class ItemsFragment1 : Fragment(), ItemsListener {
 
     private lateinit var itemsAdapter: ItemsAdapter
+    private val viewModel: ItemsViewModel by viewModels()
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +33,6 @@ class ItemsFragment1 : Fragment(), ItemsListener {
 
         return inflater.inflate(R.layout.fragment_items1, container, false)
     }
-
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -43,30 +46,36 @@ class ItemsFragment1 : Fragment(), ItemsListener {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = itemsAdapter
 
-        val time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))
+        viewModel.getData()
 
-        val listItems = listOf<ItemsModel>(
-            ItemsModel(R.drawable.main_kyn, "Main Khyn", "this is clever cat",time),
-            ItemsModel(R.drawable.abyssinian, " Abyssinian cat,", "this is beautifyle cat",time),
-            ItemsModel(R.drawable.bengal, "Bengal cat", "very affectionate cat",time),
-            ItemsModel(R.drawable.blue_kit, "Russian Blue", "very kind cat", time),
-            ItemsModel(R.drawable.britan, "British Shorthair", "This is britan cat", time),
-            ItemsModel(R.drawable.oriental_shorthair, "Oriental Shorthair", "This is fluffy cat", time),
-            ItemsModel(R.drawable.shotland, "Shortland", "This is active", time),
-            ItemsModel(R.drawable.siamese, "Siamse", "This is right", time),
-            ItemsModel(R.drawable.pers_kit, "Persid", "This is active", time),
-            ItemsModel(R.drawable.cornish_rex, "Cornish-rex", "very kind cat", time),
-            ItemsModel(R.drawable.siamese, "Siamse", "this is clever cat", time),
-            ItemsModel(R.drawable.sphynx, "Sphynx", "very affectionate cat", time)
+        viewModel.items.observe(viewLifecycleOwner) { listItems ->
+            itemsAdapter.submitList(listItems)
+        }
+        viewModel.msg.observe(viewLifecycleOwner) { msg ->
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+        }
+        viewModel.bundle.observe(viewLifecycleOwner) { navBundle ->
 
-        )
-        itemsAdapter.submitList(listItems.toList())
+            val detailsFragment = DetailsFragment1()
+            val bundle = Bundle()
+            bundle.putString("title", navBundle.title)
+            bundle.putString("description", navBundle.description)
+            bundle.putInt("imageView", navBundle.image)
+            bundle.putString("time", navBundle.time)
 
+            detailsFragment.arguments = bundle
 
+            parentFragmentManager
+                .beginTransaction()
+                .replace(R.id.activity_container, detailsFragment)
+                .addToBackStack("Details")
+                .commit()
+        }
     }
 
+
     override fun onClick() {
-        Toast.makeText(context, "ImageView clicked", Toast.LENGTH_SHORT).show()
+        viewModel.imageViewClicked()
     }
 
 
@@ -74,34 +83,12 @@ class ItemsFragment1 : Fragment(), ItemsListener {
         title: String,
         description: String,
         imageView: Int,
-        time: String ) {
-
-        val detailsFragment = DetailsFragment1()
-        // в бвндле храми маленькие данные и плюс можно там прописать ключик и имя ключика,
-        // которые мы сможем передать в аргументы
-        val bundle = Bundle()
-        bundle.putString("title", title)
-        bundle.putString("description", description)
-        bundle.putInt("imageView", imageView)
-        bundle.putString("time", time)
-
-        detailsFragment.arguments = bundle
-
-        parentFragmentManager
-            .beginTransaction()
-            .replace(R.id.activity_container, detailsFragment)
-            .addToBackStack("Details")
-            .commit()
+        time: String
+    ) {
+        viewModel.elementClicked(title, description, imageView, time)
     }
-}
 
-//        //TODO add метод мы больше не используем
-//        // теперь всегда используем replase
-//        //replace всегда будет иметь или аддТоБукстек, чтобы мы могли вернутся назад или же его не будет,
-//        // чтобы мы вернулись назад
-//        parentFragmentManager.beginTransaction()
-//            .replace(R.id.activity_container,detailsFragment)
-//            .addToBackStack("Details")
-//            .commit()
+
+}
 
 

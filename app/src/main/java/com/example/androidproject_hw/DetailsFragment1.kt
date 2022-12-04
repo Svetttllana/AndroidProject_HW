@@ -26,19 +26,19 @@ class DetailsFragment1 : Fragment() {
         val detailsName = view.findViewById<TextView>(R.id.detailsTitle)
         val detailsDate = view.findViewById<TextView>(R.id.detailsDescription)
         val detailsImage = view.findViewById<ImageView>(R.id.detailsImage)
-val detatilsTime = view.findViewById<TextView>(R.id.detailsTime)
+        val detatilsTime = view.findViewById<TextView>(R.id.detailsTime)
 
         val bundle = arguments
 
-        bundle?.let{safeBundle ->
+        bundle?.let { safeBundle ->
             val name = safeBundle.getString("title")
             val date = safeBundle.getString("description")
             val image = safeBundle.getInt("imageView")
-            val time = safeBundle.getString( "time")
+            val time = safeBundle.getString("time")
 
             detailsName.text = name
             detailsDate.text = date
-            detatilsTime.text=time
+            detatilsTime.text = time
             detailsImage.setBackgroundResource(image)
 
         }
