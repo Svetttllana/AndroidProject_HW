@@ -24,8 +24,6 @@ class ItemsFragment1 : Fragment(), ItemsListener {
     private val viewModel: ItemsViewModel by viewModels()
 
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,17 +56,17 @@ class ItemsFragment1 : Fragment(), ItemsListener {
 
             val detailsFragment = DetailsFragment1()
             val bundle = Bundle()
-            bundle.putString("title", navBundle.title)
-            bundle.putString("description", navBundle.description)
-            bundle.putInt("imageView", navBundle.image)
-            bundle.putString("time", navBundle.time)
+            bundle.putString(TITLE, navBundle.title)
+            bundle.putString(DESCRIPTION, navBundle.description)
+            bundle.putInt(IMAGE, navBundle.image)
+            bundle.putString(TIME, navBundle.time)
 
             detailsFragment.arguments = bundle
 
             parentFragmentManager
                 .beginTransaction()
                 .replace(R.id.activity_container, detailsFragment)
-                .addToBackStack("Details")
+                .addToBackStack(DETAILS)
                 .commit()
         }
     }

@@ -1,7 +1,6 @@
 package com.example.clswrk_androidprojekt.adapter
 
 
-
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,14 +10,13 @@ import com.example.androidproject_hw.R
 import com.example.androidproject_hw.listener.ItemsListener
 import com.example.clswrk_androidprojekt.model.ItemsModel
 
-// должен показать данные из листа на ю-ай.
-// он получчает 1 элемент из всего списка и ему присваивает вьюшки
+
 class ItemsViewHolder(
     private var view: View,
     private var itemsListener: ItemsListener
 ) : RecyclerView.ViewHolder(view) {
 
-    // во вьюхолдере всегда баинд и сабмитлист
+
     fun bind(itemsModel: ItemsModel) {
 
 
@@ -39,11 +37,10 @@ class ItemsViewHolder(
         }
 
 
-        //получаем данные того элемента на который нажали,
-        // вьюХолдер работает по позициям
+
         itemView.setOnClickListener {
             itemsListener.onElementSelected(
-                itemsModel.title, itemsModel.description, itemsModel.image,itemsModel.time
+                itemsModel.title, itemsModel.description, itemsModel.image, itemsModel.time
             )
 
         }

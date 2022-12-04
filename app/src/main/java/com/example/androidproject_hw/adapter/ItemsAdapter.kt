@@ -5,15 +5,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.listener.ItemsListener
 import com.example.clswrk_androidprojekt.model.ItemsModel
-class ItemsAdapter(private val itemsListener: ItemsListener): RecyclerView.Adapter<ItemsViewHolder>() {
+class ItemsAdapter(private var itemsListener: ItemsListener): RecyclerView.Adapter<ItemsViewHolder>() {
 
 
 
 
-    //лист приватный виден ток в адапторе
+
     private var listItems = mutableListOf<ItemsModel>()
-    // это метод по умолчанию и так его принято называть
-    //инициализируем вот так через сеттер
+
     fun submitList(list: List<ItemsModel>){
         this.listItems=list.toMutableList()
 
@@ -25,9 +24,9 @@ class ItemsAdapter(private val itemsListener: ItemsListener): RecyclerView.Adapt
         return ItemsViewHolder(view,itemsListener)
     }
 
-    // тут прост передаем данные
+
     override fun onBindViewHolder(holder: ItemsViewHolder, position: Int) {
-//вызываем метод вьюХолдера и передаем ему каждй элемент
+
         holder.bind(listItems[position])
     }
 
