@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsFragment1">
+    android:background="@color/background_fd"
+    android:backgroundTint="@color/background_fd"
+    tools:context=".Presentation.view.DetailsFragment1">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/detailsImage"
         android:layout_width="230dp"
         android:layout_height="237dp"
@@ -17,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.267" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/detailsTitle"
         android:layout_width="284dp"
         android:layout_height="52dp"
@@ -33,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/detailsDescription"
         android:layout_width="369dp"
         android:layout_height="62dp"
@@ -45,7 +48,7 @@
         app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/detailsTime"
         android:layout_width="166dp"
         android:layout_height="40dp"

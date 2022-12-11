@@ -3,7 +3,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidproject_hw.R
-import com.example.androidproject_hw.listener.ItemsListener
+import com.example.androidproject_hw.databinding.ItemsCatsBinding
+import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
 import com.example.clswrk_androidprojekt.model.ItemsModel
 class ItemsAdapter(private var itemsListener: ItemsListener): RecyclerView.Adapter<ItemsViewHolder>() {
 
@@ -20,8 +21,11 @@ class ItemsAdapter(private var itemsListener: ItemsListener): RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsViewHolder {
 
-        val view= LayoutInflater.from(parent.context).inflate(R.layout.items_cats,parent,false)
-        return ItemsViewHolder(view,itemsListener)
+        val viewBinding = ItemsCatsBinding.inflate(
+            LayoutInflater.from(parent.context),
+        parent,false)
+
+        return ItemsViewHolder(viewBinding,itemsListener)
     }
 
 

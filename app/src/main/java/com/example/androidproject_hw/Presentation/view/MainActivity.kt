@@ -1,7 +1,8 @@
-package com.example.androidproject_hw
+package com.example.androidproject_hw.Presentation.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.androidproject_hw.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -9,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.activity_container, ItemsFragment1())
+        fragmentTransaction.add(R.id.activity_container, LoginFragment())
         fragmentTransaction.commit()
     }
 }

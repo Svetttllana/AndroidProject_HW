@@ -1,4 +1,4 @@
-package com.example.androidproject_hw.listener
+package com.example.androidproject_hw.Presentation.adapter.listener
 
 interface ItemsListener {
 

@@ -6,32 +6,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidproject_hw.R
+import com.example.androidproject_hw.databinding.ItemsCatsBinding
 
-import com.example.androidproject_hw.listener.ItemsListener
+import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
 import com.example.clswrk_androidprojekt.model.ItemsModel
 
 
 class ItemsViewHolder(
-    private var view: View,
+    private var viewBinding: ItemsCatsBinding,
     private var itemsListener: ItemsListener
-) : RecyclerView.ViewHolder(view) {
+) : RecyclerView.ViewHolder(viewBinding.root) {
 
 
     fun bind(itemsModel: ItemsModel) {
 
 
-        val title = view.findViewById<TextView>(R.id.tv_title)
-        val imageView = view.findViewById<ImageView>(R.id.iv_image)
-        val time = view.findViewById<TextView>(R.id.tv_time)
+       viewBinding.tvTitle.text = itemsModel.title
+       viewBinding.ivImage.setBackgroundResource(itemsModel.image)
+        viewBinding.tvTime.text = itemsModel.time
 
-
-        title.text = itemsModel.title
-        imageView.setBackgroundResource(itemsModel.image)
-        time.text = itemsModel.time
-
-
-
-        imageView.setOnClickListener {
+      viewBinding.ivImage.setOnClickListener {
 
             itemsListener.onClick()
         }
