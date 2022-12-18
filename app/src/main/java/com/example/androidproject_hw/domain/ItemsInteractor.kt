@@ -1,8 +1,9 @@
 package com.example.androidproject_hw.domain
 
 import com.example.clswrk_androidprojekt.model.ItemsModel
+import javax.inject.Inject
 
-class ItemsInteractor(private val itemsReposetory: ItemsReposetory) {
+class ItemsInteractor @Inject constructor(private val itemsReposetory: ItemsReposetory) {
 
     fun getData():List<ItemsModel>{
       return itemsReposetory.getData()

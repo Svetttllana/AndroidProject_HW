@@ -21,8 +21,10 @@ import com.example.androidproject_hw.utils.AppConstans.TIME
 import com.example.androidproject_hw.utils.AppConstans.TITLE
 import com.example.clswrk_androidprojekt.adapter.ItemsAdapter
 import com.example.clswrk_androidprojekt.model.ItemsModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
 
     private var _viewBinding: FragmentItems1Binding? = null

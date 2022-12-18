@@ -7,8 +7,10 @@ import com.example.androidproject_hw.domain.ItemsReposetory
 import com.example.clswrk_androidprojekt.model.ItemsModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import javax.inject.Inject
 
-class ItemsRepositoryImpl:ItemsReposetory {
+class ItemsRepositoryImpl @Inject constructor() :ItemsReposetory {
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun getData(): List<ItemsModel> {
         val time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))

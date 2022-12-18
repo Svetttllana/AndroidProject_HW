@@ -1,14 +1,18 @@
 package com.example.androidproject_hw.Presentation.view
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import com.example.androidproject_hw.R
-import com.example.androidproject_hw.domain.ItemsInteractor
-import com.example.clswrk_androidprojekt.model.ItemsModel
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
-class ItemsPresenter(
+import com.example.androidproject_hw.R
+
+
+import com.example.androidproject_hw.domain.ItemsInteractor
+import dagger.Provides
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
+
+
+//@HiltAndroidApp
+//@Provides
+class ItemsPresenter @Inject constructor(
     private val itemsView: ItemsView,
     private val itemsInteractor: ItemsInteractor
 ) {
@@ -23,6 +27,7 @@ class ItemsPresenter(
     fun imageViewClicked() {
 
         itemsView.imageViewClicked(R.string.imageview_clicked)
+
 
     }
 
