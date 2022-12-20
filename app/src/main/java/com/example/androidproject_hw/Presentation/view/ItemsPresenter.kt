@@ -10,12 +10,15 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 
-//@HiltAndroidApp
-//@Provides
+
 class ItemsPresenter @Inject constructor(
-    private val itemsView: ItemsView,
-    private val itemsInteractor: ItemsInteractor
+       private val itemsInteractor: ItemsInteractor
 ) {
+    private lateinit var itemsView:ItemsView
+
+    fun setVIew(context:ItemsView){
+        itemsView=context
+    }
 
 
     fun getData() {

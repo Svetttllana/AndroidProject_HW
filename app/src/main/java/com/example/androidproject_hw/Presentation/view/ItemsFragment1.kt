@@ -23,6 +23,7 @@ import com.example.clswrk_androidprojekt.adapter.ItemsAdapter
 import com.example.clswrk_androidprojekt.model.ItemsModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
@@ -31,6 +32,8 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
     private val viewBinding get() = _viewBinding!!
 
     private lateinit var itemsAdapter: ItemsAdapter
+
+    @Inject
     lateinit var itemsPresenter: ItemsPresenter
 
     override fun onCreateView(
@@ -48,7 +51,7 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        itemsPresenter = ItemsPresenter(this, ItemsInteractor(ItemsRepositoryImpl()))
+        itemsPresenter.setVIew(this)
 
         itemsAdapter = ItemsAdapter(this)
 
@@ -108,7 +111,6 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
 
     }
 
-
-}
+  }
 
 

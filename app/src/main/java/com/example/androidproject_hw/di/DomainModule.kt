@@ -12,9 +12,9 @@ import dagger.hilt.components.SingletonComponent
 class DomainModule {
 
     @Provides
-   fun providesItemsInteractor(
-       itemsReposetory: ItemsReposetory
-   ):ItemsInteractor{
-       return ItemsInteractor(itemsReposetory)
-   }
+    fun providesItemsInteractor(
+        itemsReposetory: ItemsReposetory
+    ): ItemsInteractor {
+        return ItemsInteractor(itemsReposetory)
+    }
 }
