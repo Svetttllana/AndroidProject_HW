@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_fd"
     android:backgroundTint="@color/background_fd"
-    tools:context=".Presentation.view.DetailsFragment1">
+    tools:context=".Presentation.view.items.DetailsFragment1">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/detailsImage"
@@ -59,4 +59,16 @@
         app:layout_constraintTop_toBottomOf="@+id/detailsDescription"
         app:layout_constraintVertical_bias="0.268" />
 
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="logout"
+        android:backgroundTint="#74711D1D"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

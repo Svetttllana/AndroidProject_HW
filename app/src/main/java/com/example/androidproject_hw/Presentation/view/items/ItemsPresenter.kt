@@ -1,23 +1,20 @@
-package com.example.androidproject_hw.Presentation.view
+package com.example.androidproject_hw.Presentation.view.items
 
 
 import com.example.androidproject_hw.R
 
 
-import com.example.androidproject_hw.domain.ItemsInteractor
-import dagger.Provides
-import dagger.hilt.android.HiltAndroidApp
+import com.example.androidproject_hw.domain.items.ItemsInteractor
 import javax.inject.Inject
 
 
-
 class ItemsPresenter @Inject constructor(
-       private val itemsInteractor: ItemsInteractor
+    private val itemsInteractor: ItemsInteractor
 ) {
-    private lateinit var itemsView:ItemsView
+    private lateinit var itemsView: ItemsView
 
-    fun setVIew(context:ItemsView){
-        itemsView=context
+    fun setVIew(itemsFragment1: ItemsFragment1) {
+        itemsView = itemsFragment1
     }
 
 
@@ -27,6 +24,7 @@ class ItemsPresenter @Inject constructor(
         itemsView.dataReceived(listItems)
 
     }
+
     fun imageViewClicked() {
 
         itemsView.imageViewClicked(R.string.imageview_clicked)
@@ -41,7 +39,7 @@ class ItemsPresenter @Inject constructor(
         time: String
     ) {
 
-        itemsView.goToDetails(title, description, imageView, time)
+        itemsView.goToDetails(title=title, description=description, imageView=imageView, time=time)
 
 
     }

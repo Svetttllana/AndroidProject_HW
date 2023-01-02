@@ -1,4 +1,4 @@
-package com.example.androidproject_hw.Presentation.view
+package com.example.androidproject_hw.Presentation.view.items
 
 import android.os.Build
 import android.os.Bundle
@@ -11,8 +11,6 @@ import androidx.annotation.RequiresApi
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentItems1Binding
 import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
-import com.example.androidproject_hw.data.ItemsRepositoryImpl
-import com.example.androidproject_hw.domain.ItemsInteractor
 import com.example.androidproject_hw.utils.AppConstans
 import com.example.androidproject_hw.utils.AppConstans.DESCRIPTION
 import com.example.androidproject_hw.utils.AppConstans.DETAILS
@@ -111,6 +109,6 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
 
     }
 
-  }
+}
 
 

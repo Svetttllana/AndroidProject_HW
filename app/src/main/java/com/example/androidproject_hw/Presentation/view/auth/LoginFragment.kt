@@ -1,16 +1,23 @@
-package com.example.androidproject_hw.Presentation.view
+package com.example.androidproject_hw.Presentation.view.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import com.example.androidproject_hw.Presentation.view.items.DetailsFragment1
+import com.example.androidproject_hw.Presentation.view.items.HomeFragment
+import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+@AndroidEntryPoint
+class LoginFragment : Fragment(), LoginVIew {
+
+    @Inject
+    lateinit var loginPresenter: LoginPresenter
 
     private var _viewBinding: FragmentLoginBinding? = null
     private val viewBinding get() = _viewBinding!!
@@ -29,6 +36,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loginPresenter.setView(this)
 
 
         viewBinding.btSignIn.setOnClickListener {
@@ -52,5 +60,21 @@ class LoginFragment : Fragment() {
             }
 
         }
+
+
+        viewBinding.btShowCreds.setOnClickListener {
+            loginPresenter.loginUser(
+                viewBinding.etLog.text.toString(),
+                viewBinding.etPass.text.toString()
+            )
+        }
+
+
+    }
+
+    override fun userLoggedIn() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.activity_container, HomeFragment())
+            .commit()
     }
 }

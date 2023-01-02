@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#1E860DA1"
+    tools:context=".Presentation.view.items.HomeFragment">
+
+
+    <TextView
+        android:id="@+id/tv_userCreads"
+        android:layout_width="312dp"
+        android:layout_height="76dp"
+        android:text="hello home fragm"
+        android:textColor="#D8511414"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.297" />
+
+    <Button
+        android:id="@+id/btgoToNext"
+        android:layout_width="365dp"
+        android:layout_height="59dp"
+        android:backgroundTint="#74711D1D"
+        android:text="go to next fragm"
+        app:barrierMargin="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_userCreads"
+        app:layout_constraintVertical_bias="0.471" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

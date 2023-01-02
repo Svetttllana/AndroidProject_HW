@@ -38,7 +38,6 @@
             android:layout_width="409dp"
             android:layout_height="59dp"
             android:background="#d7c6cf"
-
             android:hint="Enter your password" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,5 +56,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.566" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btShowCreds"
+        android:layout_width="291dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#8caba8"
+        android:textAllCaps="false"
+        android:text="Show Creads"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btSignIn"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <TextView
+        android:id="@+id/tv_userCreads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btShowCreds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
