@@ -4,24 +4,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidproject_hw.domain.auth.AuthInteractor
-import com.example.clswrk_androidprojekt.model.ItemsModel
+import com.example.androidproject_hw.model.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailsViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val authInteractor: AuthInteractor
-) : ViewModel() {
+):ViewModel() {
 
-    private val _nav = MutableLiveData<Unit?>()
-    val nav: LiveData<Unit?> = _nav
+    private val _userCreds = MutableLiveData<UserModel>()
+    val userCreds:LiveData<UserModel> = _userCreds
 
 
-    fun logoutUser() {
-        authInteractor.logoutUser()
-        _nav.value = Unit
+    fun showUserData(){
+
+_userCreds.value=authInteractor.getUserCreds()
 
     }
-
 
 }

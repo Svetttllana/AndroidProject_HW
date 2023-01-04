@@ -4,7 +4,7 @@ import com.example.androidproject_hw.model.UserModel
 
 interface AuthRepository {
 
-    fun loginUser(userName:String,userPassword:String)
+    fun loginUser(userName: String, userPassword: String)
 
 
     fun showUseCreds(): UserModel
@@ -12,5 +12,6 @@ interface AuthRepository {
     fun doesUserExist(): Boolean
 
     fun userLogout()
+
 
 }

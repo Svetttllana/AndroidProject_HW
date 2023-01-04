@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.androidproject_hw.Presentation.view.auth.OnBoardingFragment
-import com.example.androidproject_hw.Presentation.view.auth.OnBoardingPresenter
+
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentHomeBinding
 import com.example.androidproject_hw.model.UserModel
@@ -16,15 +16,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), HomeView {
+class HomeFragment : Fragment() {
 
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
 
-    @Inject
-    lateinit var homePresenter: HomePresenter
-    // private val viewModel: HomeViewModel by viewModels()
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +39,7 @@ class HomeFragment : Fragment(), HomeView {
 
 
 
-        homePresenter.setView(this)
+        viewModel.showUserData()
 
 
         binding.btgoToNext.setOnClickListener {
@@ -48,16 +47,14 @@ class HomeFragment : Fragment(), HomeView {
                 .replace(R.id.activity_container, OnBoardingFragment())
                 .commit()
         }
-        homePresenter.showUserData()
 
-    }
-
-    override fun userDataShow(userName: String, userPassword: String) {
-        binding.tvUserCreads.text = "${userName} \n ${userPassword}"
+        viewModel.userCreds.observe(viewLifecycleOwner) {
+            binding.tvUserCreads.text = "${it.userName} \n ${it.userPassword}"
+        }
 
 
     }
-
-
 }
+
+
 

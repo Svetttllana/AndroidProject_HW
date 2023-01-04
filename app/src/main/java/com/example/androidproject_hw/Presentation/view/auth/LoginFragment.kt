@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.androidproject_hw.Presentation.view.items.DetailsFragment1
 import com.example.androidproject_hw.Presentation.view.items.HomeFragment
 import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
@@ -14,10 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : Fragment(), LoginVIew {
+class LoginFragment : Fragment() {
 
-    @Inject
-    lateinit var loginPresenter: LoginPresenter
+    private val viewModel: LoginViewModel by viewModels()
 
     private var _viewBinding: FragmentLoginBinding? = null
     private val viewBinding get() = _viewBinding!!
@@ -35,8 +35,6 @@ class LoginFragment : Fragment(), LoginVIew {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        loginPresenter.setView(this)
 
 
         viewBinding.btSignIn.setOnClickListener {
@@ -63,18 +61,18 @@ class LoginFragment : Fragment(), LoginVIew {
 
 
         viewBinding.btShowCreds.setOnClickListener {
-            loginPresenter.loginUser(
+            viewModel.loginUser(
                 viewBinding.etLog.text.toString(),
                 viewBinding.etPass.text.toString()
             )
         }
 
-
+        viewModel.nav.observe(viewLifecycleOwner) {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.activity_container, HomeFragment())
+                .commit()
+        }
     }
 
-    override fun userLoggedIn() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.activity_container, HomeFragment())
-            .commit()
-    }
+
 }

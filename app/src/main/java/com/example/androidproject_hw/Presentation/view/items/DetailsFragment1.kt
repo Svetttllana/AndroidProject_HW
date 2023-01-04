@@ -17,14 +17,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsFragment1 : Fragment(), DetailsView {
+class DetailsFragment1 : Fragment() {
 
-    @Inject
-    lateinit var detailsPresenter: DetailsPresenter
 
     private var _viewBinding: FragmentDetails1Binding? = null
     private val viewBinding get() = _viewBinding!!
 
+    private val viewModel: DetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,39 +40,36 @@ class DetailsFragment1 : Fragment(), DetailsView {
         super.onViewCreated(view, savedInstanceState)
 
 
-        detailsPresenter.setView(this)
-
         val bundle = arguments
 
         bundle?.let { safeBundle ->
-            detailsPresenter.getArguments(
-                safeBundle.getString(TITLE),
-                safeBundle.getString(DESCRIPTION),
-                safeBundle.getString(TIME),
-                safeBundle.getInt(IMAGE)
-            )
+
+            val title = safeBundle.getString(TITLE)
+            val description = safeBundle.getString(DESCRIPTION)
+            val time = safeBundle.getString(TIME)
+            val image = safeBundle.getInt(IMAGE)
 
 
+            viewBinding.detailsTitle.text = title
+            viewBinding.detailsDescription.text = description
+            viewBinding.detailsTime.text = time
+            viewBinding.detailsImage.setBackgroundResource(image)
         }
 
 
         viewBinding.btnLogout.setOnClickListener {
-            detailsPresenter.logoutUser()
+            viewModel.logoutUser()
         }
 
+        viewModel.nav.observe(viewLifecycleOwner) {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.activity_container, LoginFragment())
+                .commit()
+
+        }
+
+
     }
 
-    override fun logoutUser() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.activity_container, LoginFragment())
-            .commit()
-    }
-
-    override fun displayItemData(title: String, description: String, time: String, image: Int) {
-        viewBinding.detailsTitle.text = title
-        viewBinding.detailsDescription.text = description
-        viewBinding.detailsTime.text = time
-        viewBinding.detailsImage.setBackgroundResource(image)
-    }
 
 }
