@@ -1,7 +1,5 @@
 package com.example.androidproject_hw.di;
 
-import com.example.androidproject_hw.Presentation.view.items.ItemsPresenter
-import com.example.androidproject_hw.domain.auth.AuthInteractor
 import com.example.androidproject_hw.domain.items.ItemsInteractor
 import dagger.Module;
 import dagger.Provides;

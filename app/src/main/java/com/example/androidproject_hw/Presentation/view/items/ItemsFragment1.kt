@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentItems1Binding
 import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
@@ -24,15 +25,15 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
+class ItemsFragment1 : Fragment(), ItemsListener {
 
     private var _viewBinding: FragmentItems1Binding? = null
     private val viewBinding get() = _viewBinding!!
 
     private lateinit var itemsAdapter: ItemsAdapter
 
-    @Inject
-    lateinit var itemsPresenter: ItemsPresenter
+    private val viewModel: ItemsViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,22 +50,51 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        itemsPresenter.setVIew(this)
 
         itemsAdapter = ItemsAdapter(this)
 
+
+
         viewBinding.recyclerView.adapter = itemsAdapter
 
-        itemsPresenter.getData()
+        viewModel.getData()
 
+        viewModel.items.observe(viewLifecycleOwner) { listItems ->
+            itemsAdapter.submitList(listItems)
+        }
+
+        viewModel.imageViewClick()
+        viewModel.msg.observe(viewLifecycleOwner) { msg ->
+            Toast.makeText(context, getString(msg), Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.goToDetails()
+        viewModel.bundl.observe(viewLifecycleOwner) { navBandl ->
+            if (navBandl != null) {
+                val detailsFragment = DetailsFragment1()
+                val bundle = Bundle()
+                bundle.putString(TITLE, navBandl.title)
+                bundle.putString(DESCRIPTION, navBandl.description)
+                bundle.putInt(AppConstans.IMAGE, navBandl.image)
+                bundle.putString(TIME, navBandl.time)
+
+                detailsFragment.arguments = bundle
+
+                parentFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.activity_container, detailsFragment)
+                    .addToBackStack(DETAILS)
+                    .commit()
+            }
+
+        }
 
     }
 
 
     override fun onClick() {
-        itemsPresenter.imageViewClicked()
+        viewModel.imageViewClick()
     }
-
 
     override fun onElementSelected(
         title: String,
@@ -72,43 +102,18 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
         imageView: Int,
         time: String
     ) {
-        itemsPresenter.elementSelected(title, description, imageView, time)
-
+        viewModel.elementClicked(imageView, title, description, time)
     }
 
-    override fun dataReceived(list: List<ItemsModel>) {
-        itemsAdapter.submitList(list)
-    }
-
-    override fun imageViewClicked(msg: Int) {
-        Toast.makeText(context, getString(msg), Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun goToDetails(
-        title: String,
-        description: String,
-        imageView: Int,
-        time: String
-    ) {
-
-        val detailsFragment = DetailsFragment1()
-        val bundle = Bundle()
-        bundle.putString(TITLE, title)
-        bundle.putString(DESCRIPTION, description)
-        bundle.putInt(AppConstans.IMAGE, imageView)
-        bundle.putString(TIME, time)
-
-        detailsFragment.arguments = bundle
-
-        parentFragmentManager
-            .beginTransaction()
-            .replace(R.id.activity_container, detailsFragment)
-            .addToBackStack(DETAILS)
-            .commit()
-
-    }
 
 }
+
+
+
+
+
+
+
+
 
 
