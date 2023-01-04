@@ -1,4 +1,4 @@
-package com.example.androidproject_hw.sgaredPrefs
+package com.example.androidproject_hw.data.sgaredPrefs
 
 import android.content.SharedPreferences
 import com.example.androidproject_hw.model.UserModel

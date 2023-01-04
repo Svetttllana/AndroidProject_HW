@@ -1,7 +1,9 @@
 package com.example.androidproject_hw.di;
 
+import com.example.androidproject_hw.MainPresenter
 import com.example.androidproject_hw.Presentation.view.auth.LoginPresenter
 import com.example.androidproject_hw.Presentation.view.auth.OnBoardingPresenter
+import com.example.androidproject_hw.Presentation.view.items.DetailsPresenter
 import com.example.androidproject_hw.Presentation.view.items.HomePresenter
 import com.example.androidproject_hw.Presentation.view.items.ItemsPresenter
 import com.example.androidproject_hw.domain.auth.AuthInteractor
@@ -38,7 +40,15 @@ class PresentationModule {
         return HomePresenter(authInteractor)
     }
 
+    @Provides
+    fun provideDetailsPresenter(authInteractor: AuthInteractor): DetailsPresenter {
+        return DetailsPresenter(authInteractor)
+    }
 
+    @Provides
+    fun provideMainPresenter(authInteractor: AuthInteractor): MainPresenter {
+        return MainPresenter(authInteractor)
+    }
 
 
 }

@@ -2,7 +2,7 @@ package com.example.androidproject_hw.data.auth
 
 import com.example.androidproject_hw.domain.auth.AuthRepository
 import com.example.androidproject_hw.model.UserModel
-import com.example.androidproject_hw.sgaredPrefs.SharedPreferencesHelper
+import com.example.androidproject_hw.data.sgaredPrefs.SharedPreferencesHelper
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(

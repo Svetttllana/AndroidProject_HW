@@ -6,7 +6,7 @@ import com.example.androidproject_hw.data.auth.AuthRepositoryImpl
 import com.example.androidproject_hw.data.items.ItemsRepositoryImpl
 import com.example.androidproject_hw.domain.auth.AuthRepository
 import com.example.androidproject_hw.domain.items.ItemsReposetory
-import com.example.androidproject_hw.sgaredPrefs.SharedPreferencesHelper
+import com.example.androidproject_hw.data.sgaredPrefs.SharedPreferencesHelper
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -39,7 +39,7 @@ abstract class DataModule {
         @Provides
 
         fun provideSharedPreferences(
-            @ApplicationContext context: Context):SharedPreferencesHelper{
+            @ApplicationContext context: Context): SharedPreferencesHelper {
             return SharedPreferencesHelper(
 
                 context.getSharedPreferences(SP_KEY,MODE_PRIVATE)

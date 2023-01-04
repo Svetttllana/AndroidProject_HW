@@ -14,14 +14,17 @@ import com.example.androidproject_hw.utils.AppConstans.IMAGE
 import com.example.androidproject_hw.utils.AppConstans.TIME
 import com.example.androidproject_hw.utils.AppConstans.TITLE
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsFragment1 : Fragment() {
+class DetailsFragment1 : Fragment(), DetailsView {
+
+    @Inject
+    lateinit var detailsPresenter: DetailsPresenter
 
     private var _viewBinding: FragmentDetails1Binding? = null
     private val viewBinding get() = _viewBinding!!
 
-    private val viewModel:DetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +41,8 @@ class DetailsFragment1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        detailsPresenter.setView(this)
+
         val bundle = arguments
 
         bundle?.let { safeBundle ->
@@ -52,15 +57,18 @@ class DetailsFragment1 : Fragment() {
             viewBinding.detailsImage.setBackgroundResource(image)
 
         }
-        viewBinding.btnLogout.setOnClickListener{
-            viewModel.logoutUser()
-        }
-        viewModel.nav.observe(viewLifecycleOwner){
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.activity_container,LoginFragment())
-                .commit()
+
+
+        viewBinding.btnLogout.setOnClickListener {
+            detailsPresenter.logoutUser()
         }
 
+    }
+
+    override fun logoutUser() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.activity_container,LoginFragment())
+            .commit()
     }
 
 }

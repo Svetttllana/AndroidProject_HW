@@ -12,11 +12,11 @@ import com.example.androidproject_hw.databinding.ActivityMain2Binding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainView {
 
     private var _binding: ActivityMain2Binding? = null
 
-    private val viewModel: MainViewModel by viewModels()
+    private lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +24,23 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(_binding!!.root)
 
-        viewModel.checkUserExists()
+        mainPresenter.setView(this)
 
-        viewModel.userExists.observe(this){
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(R.id.activity_container,
-               when(it){
-                   true -> HomeFragment()
-                   false -> LoginFragment()
-               }
+        mainPresenter.checkUserExists()
+
+
+
+    }
+
+    override fun checkUserExists(userExists:Boolean){
+        supportFragmentManager.beginTransaction()
+            .add(R.id.activity_container,
+                when(userExists){
+                    true -> HomeFragment()
+                    false -> LoginFragment()
+                }
             )
-            fragmentTransaction.commit()
-        }
+            .commit()
 
 
 
