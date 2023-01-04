@@ -18,4 +18,24 @@ class DetailsPresenter @Inject constructor(
         detailsView.logoutUser()
     }
 
+    fun getArguments(title:String?,description:String?,time: String?,image:Int) {
+        detailsView.displayItemData(
+            when (title.isNullOrBlank()) {
+
+                true -> "no data"
+                false -> title
+            },
+            when (description.isNullOrEmpty()) {
+                true -> " no date"
+                false -> description
+
+            },
+            when(time.isNullOrEmpty()){
+                true -> "no date"
+                false -> time
+            },
+            image)
+
+    }
+
 }

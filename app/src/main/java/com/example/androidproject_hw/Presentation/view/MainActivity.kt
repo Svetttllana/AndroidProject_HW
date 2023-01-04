@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(), MainView {
     private var _binding: ActivityMain2Binding? = null
 
     @Inject
-    private lateinit var mainPresenter: MainPresenter
+ lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -46,15 +46,13 @@ class DetailsFragment1 : Fragment(), DetailsView {
         val bundle = arguments
 
         bundle?.let { safeBundle ->
-            val title = safeBundle.getString(TITLE)
-            val description = safeBundle.getString(DESCRIPTION)
-            val image = safeBundle.getInt(IMAGE)
-            val time = safeBundle.getString(TIME)
+            detailsPresenter.getArguments(
+                safeBundle.getString(TITLE),
+                safeBundle.getString(DESCRIPTION),
+                safeBundle.getString(TIME),
+                safeBundle.getInt(IMAGE)
+            )
 
-            viewBinding.detailsTitle.text = title
-            viewBinding.detailsDescription.text = description
-            viewBinding.detailsTime.text = time
-            viewBinding.detailsImage.setBackgroundResource(image)
 
         }
 
@@ -67,8 +65,15 @@ class DetailsFragment1 : Fragment(), DetailsView {
 
     override fun logoutUser() {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.activity_container,LoginFragment())
+            .replace(R.id.activity_container, LoginFragment())
             .commit()
+    }
+
+    override fun displayItemData(title: String, description: String, time: String, image: Int) {
+        viewBinding.detailsTitle.text = title
+        viewBinding.detailsDescription.text = description
+        viewBinding.detailsTime.text = time
+        viewBinding.detailsImage.setBackgroundResource(image)
     }
 
 }
