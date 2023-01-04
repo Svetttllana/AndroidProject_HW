@@ -1,21 +1,21 @@
-package com.example.androidproject_hw
+package com.example.androidproject_hw.Presentation.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
 import com.example.androidproject_hw.Presentation.view.auth.LoginFragment
 import com.example.androidproject_hw.Presentation.view.items.HomeFragment
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.ActivityMain2Binding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), MainView {
 
     private var _binding: ActivityMain2Binding? = null
 
+    @Inject
     private lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,19 +29,18 @@ class MainActivity : AppCompatActivity(), MainView {
         mainPresenter.checkUserExists()
 
 
-
     }
 
-    override fun checkUserExists(userExists:Boolean){
-        supportFragmentManager.beginTransaction()
-            .add(R.id.activity_container,
-                when(userExists){
-                    true -> HomeFragment()
-                    false -> LoginFragment()
-                }
-            )
+    override fun userExistsResult(userExists: Boolean) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(
+            R.id.activity_container,
+            when (userExists) {
+                true -> HomeFragment()
+                false -> LoginFragment()
+            }
+        )
             .commit()
-
 
 
     }

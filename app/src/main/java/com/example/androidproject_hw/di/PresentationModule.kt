@@ -1,6 +1,6 @@
 package com.example.androidproject_hw.di;
 
-import com.example.androidproject_hw.MainPresenter
+import com.example.androidproject_hw.Presentation.view.MainPresenter
 import com.example.androidproject_hw.Presentation.view.auth.LoginPresenter
 import com.example.androidproject_hw.Presentation.view.auth.OnBoardingPresenter
 import com.example.androidproject_hw.Presentation.view.items.DetailsPresenter
