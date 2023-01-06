@@ -4,4 +4,8 @@ import com.example.androidproject_hw.model.UserModel
 
 interface HomeView {
     fun userDataShow(userName:String,userPassword:String)
+
+   fun onBoardingResult(onBoardExists:Boolean)
+
+
 }

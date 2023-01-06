@@ -30,8 +30,8 @@ class PresentationModule {
     }
 
     @Provides
-    fun provideOnBoardingPresenter():OnBoardingPresenter{
-        return OnBoardingPresenter()
+    fun provideOnBoardingPresenter(authInteractor: AuthInteractor):OnBoardingPresenter{
+        return OnBoardingPresenter(authInteractor)
     }
 
 

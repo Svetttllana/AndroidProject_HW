@@ -1,6 +1,7 @@
 package com.example.androidproject_hw.data.sgaredPrefs
 
 import android.content.SharedPreferences
+import com.example.androidproject_hw.model.OnBoardingModel
 import com.example.androidproject_hw.model.UserModel
 import javax.inject.Inject
 
@@ -35,9 +36,26 @@ class SharedPreferencesHelper  @Inject constructor(
     }
 
 
+
+fun saveOnBoarding(onBoard:String){
+    sharedPreferences.edit().putString(ON_BOARDING,onBoard).apply()
+}
+
+
+    fun checknBoardFragment():Boolean {
+        val onBoard = sharedPreferences.getString(ON_BOARDING,"")
+return  (!onBoard.isNullOrEmpty())
+
+    }
+
+
+
+
+
     companion object{
         const val USER_NAME="USER NAME"
         const val USER_PASSWORD="USER PASSWORD"
+        const val ON_BOARDING="ON_BOARDING"
     }
 
 }

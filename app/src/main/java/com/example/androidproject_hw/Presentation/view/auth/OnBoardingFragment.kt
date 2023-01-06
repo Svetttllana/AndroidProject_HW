@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
 import com.example.androidproject_hw.R
+import com.example.androidproject_hw.data.sgaredPrefs.SharedPreferencesHelper
 import com.example.androidproject_hw.databinding.FragmentOnBoardingBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+const val ON_BOARDING="ON_BOARDING"
 @AndroidEntryPoint
+
 class OnBoardingFragment : Fragment(), OnBoardingView {
 
     private var _binding: FragmentOnBoardingBinding? = null
@@ -34,12 +36,24 @@ class OnBoardingFragment : Fragment(), OnBoardingView {
 
 binding.btNextFragm.setOnClickListener{
     onBoardingPresenter.goToItemsFragment()
+    onBoardingPresenter.saveOnBoarding(ON_BOARDING)
 }
-    }
+
+
+
+     }
 
     override fun goToItemsFragment() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.activity_container, ItemsFragment1())
             .commit()
     }
+
+    override fun onBoardSave() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.activity_container, ItemsFragment1())
+            .commit()
+    }
+
+
 }

@@ -24,7 +24,7 @@ class HomeFragment : Fragment(), HomeView {
 
     @Inject
     lateinit var homePresenter: HomePresenter
-    // private val viewModel: HomeViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,20 +42,36 @@ class HomeFragment : Fragment(), HomeView {
 
         homePresenter.setView(this)
 
-
-        binding.btgoToNext.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.activity_container, OnBoardingFragment())
-                .commit()
-        }
         homePresenter.showUserData()
 
+        binding.btgoToOnBoarding.setOnClickListener {
+            homePresenter.checkOnBoardFragm()
+
+        }
+        binding.btGoToItems.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.activity_container,ItemsFragment1())
+                .commit()
+        }
+
     }
+
 
     override fun userDataShow(userName: String, userPassword: String) {
         binding.tvUserCreads.text = "${userName} \n ${userPassword}"
 
 
+    }
+
+    override fun onBoardingResult(onBoardExists: Boolean) {
+        parentFragmentManager.beginTransaction()
+            .replace(
+                R.id.activity_container,
+                when (onBoardExists) {
+                    true -> ItemsFragment1()
+                    false -> OnBoardingFragment()
+                }
+            ).commit()
     }
 
 

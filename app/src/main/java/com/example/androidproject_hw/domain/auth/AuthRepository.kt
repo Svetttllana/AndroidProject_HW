@@ -1,5 +1,6 @@
 package com.example.androidproject_hw.domain.auth
 
+import com.example.androidproject_hw.model.OnBoardingModel
 import com.example.androidproject_hw.model.UserModel
 
 interface AuthRepository {
@@ -12,5 +13,12 @@ interface AuthRepository {
     fun doesUserExist(): Boolean
 
     fun userLogout()
+
+
+    ////
+    fun saveOnBoard(onBoard:String)
+
+    fun daesOnBoardExists():Boolean
+//fun showOnBoardCreds():OnBoardingModel
 
 }

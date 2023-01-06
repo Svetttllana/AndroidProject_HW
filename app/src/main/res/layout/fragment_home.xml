@@ -24,16 +24,27 @@
         app:layout_constraintVertical_bias="0.297" />
 
     <Button
-        android:id="@+id/btgoToNext"
+        android:id="@+id/btgoToOnBoarding"
         android:layout_width="365dp"
         android:layout_height="59dp"
         android:backgroundTint="#74711D1D"
-        android:text="go to next fragm"
+        android:text="go to OnBoarding"
         app:barrierMargin="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_userCreads"
         app:layout_constraintVertical_bias="0.471" />
+
+    <Button
+        android:id="@+id/btGoToItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go to items fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btgoToOnBoarding" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
