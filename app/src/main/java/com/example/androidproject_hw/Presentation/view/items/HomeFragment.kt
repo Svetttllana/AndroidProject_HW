@@ -51,6 +51,7 @@ class HomeFragment : Fragment(), HomeView {
         binding.btGoToItems.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.activity_container,ItemsFragment1())
+                .addToBackStack("i")
                 .commit()
         }
 
