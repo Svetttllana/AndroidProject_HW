@@ -16,10 +16,17 @@ class HomeViewModel @Inject constructor(
     private val _userCreds = MutableLiveData<UserModel>()
     val userCreds:LiveData<UserModel> = _userCreds
 
+    private val _check = MutableLiveData<Boolean>()
+    val check:LiveData<Boolean> = _check
+
+
 
     fun showUserData(){
-
 _userCreds.value=authInteractor.getUserCreds()
+    }
+
+    fun checkOnBoardFragm(){
+        _check.value= authInteractor.checkUserExists()
 
     }
 

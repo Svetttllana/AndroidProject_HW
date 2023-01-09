@@ -8,14 +8,23 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class OnBoardingViewModel @Inject constructor():ViewModel() {
+class OnBoardingViewModel @Inject constructor(
+    private val authInteractor: AuthInteractor
+):ViewModel() {
 
 private val _nav = MutableLiveData<Unit?>()
     val nav: LiveData<Unit?> = _nav
+
+    private val _save = MutableLiveData<Unit?>()
+    val save: LiveData<Unit?> = _save
 
     fun goToItemsFragment(){
       _nav.value=Unit
     }
 
+    fun saveOnBoarding(onBoard:String){
+        authInteractor.saveOnBoard(onBoard)
+        _save.value=Unit
+    }
 
 }

@@ -51,6 +51,19 @@ class HomeFragment : Fragment() {
         viewModel.userCreds.observe(viewLifecycleOwner) {
             binding.tvUserCreads.text = "${it.userName} \n ${it.userPassword}"
         }
+        binding.btgoToNext.setOnClickListener { viewModel.checkOnBoardFragm() }
+
+
+        viewModel.check.observe(viewLifecycleOwner){
+            parentFragmentManager.beginTransaction()
+                .replace(
+                    R.id.activity_container,
+                    when (it) {
+                        true -> ItemsFragment1()
+                        false -> OnBoardingFragment()
+                    }
+                ).commit()
+        }
 
 
     }

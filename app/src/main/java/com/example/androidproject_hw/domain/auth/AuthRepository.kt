@@ -13,7 +13,7 @@ interface AuthRepository {
 
     fun userLogout()
 
+    fun saveOnBoard(onBoard:String)
 
-
-
+    fun doesOnBoardExists():Boolean
 }

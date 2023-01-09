@@ -10,9 +10,10 @@ import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentOnBoardingBinding
 import dagger.hilt.android.AndroidEntryPoint
-
+const val ON_BOARDING = "ON_BOARDING"
 @AndroidEntryPoint
 class OnBoardingFragment : Fragment() {
+
 
 
     private var _binding: FragmentOnBoardingBinding? = null
@@ -35,12 +36,21 @@ class OnBoardingFragment : Fragment() {
 
 binding.btNextFragm.setOnClickListener{
    viewModel.goToItemsFragment()
+    viewModel.saveOnBoarding(ON_BOARDING)
 }
         viewModel.nav.observe(viewLifecycleOwner){
             parentFragmentManager.beginTransaction()
                 .replace(R.id.activity_container, ItemsFragment1())
                 .commit()
         }
+
+   viewModel.save.observe(viewLifecycleOwner){
+       parentFragmentManager.beginTransaction()
+           .replace(R.id.activity_container, ItemsFragment1())
+           .commit()
+   }
+
+
     }
 
 

@@ -26,8 +26,7 @@ class LoginViewModel @Inject constructor(private val authInteractor: AuthInterac
     }
 
     fun loginCheck() {
-       //     authInteractor.loginCheck()
-     _check.value=Unit
+         _check.value=Unit
 
 
     }

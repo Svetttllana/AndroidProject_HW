@@ -25,9 +25,13 @@ sharedPreferencesHelper.saveUserPassword(userPassword)
         sharedPreferencesHelper.removeUser()
     }
 
+    override fun saveOnBoard(onBoard: String) {
+        sharedPreferencesHelper.saveOnBoarding(onBoard)
+    }
 
-
-
+    override fun doesOnBoardExists(): Boolean {
+      return sharedPreferencesHelper.checknBoardFragment()
+    }
 
 
 }

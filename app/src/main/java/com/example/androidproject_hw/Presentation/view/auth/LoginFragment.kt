@@ -65,6 +65,7 @@ class LoginFragment : Fragment() {
                         .commit()
                 }
             }
+        }
 
 
 
@@ -84,4 +85,3 @@ class LoginFragment : Fragment() {
 
 
     }
-}
