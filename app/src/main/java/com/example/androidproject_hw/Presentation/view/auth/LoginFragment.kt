@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+
 import com.example.androidproject_hw.Presentation.view.items.DetailsFragment1
 import com.example.androidproject_hw.Presentation.view.items.HomeFragment
 import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
@@ -37,9 +39,15 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewBinding.btSignIn.setOnClickListener {
 
-            if (viewBinding.etLog.text.toString().isEmpty() && viewBinding.etPass.text.toString()
+
+        viewBinding.btSignIn.setOnClickListener {
+            viewModel.loginCheck()
+        }
+
+        viewModel.check.observe(viewLifecycleOwner) { logResult ->
+            if (viewBinding.etLog.text.toString()
+                    .isEmpty() && viewBinding.etPass.text.toString()
                     .isEmpty()
             ) {
                 viewBinding.etLog.error = getString(R.string.LogCantBeEmpty)
@@ -50,29 +58,30 @@ class LoginFragment : Fragment() {
             } else if (viewBinding.etPass.text.toString().isEmpty()) {
                 viewBinding.etPass.error = getString(R.string.PassCantBeEmpty)
             } else {
-                parentFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.activity_container, ItemsFragment1())
-                    .commit()
-
+                viewModel.check.observe(viewLifecycleOwner) {
+                    parentFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.activity_container, ItemsFragment1())
+                        .commit()
+                }
             }
 
+
+
+            viewBinding.btShowCreds.setOnClickListener {
+                viewModel.loginUser(
+                    viewBinding.etLog.text.toString(),
+                    viewBinding.etPass.text.toString()
+                )
+            }
+
+            viewModel.nav.observe(viewLifecycleOwner) {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.activity_container, HomeFragment())
+                    .commit()
+            }
         }
 
 
-        viewBinding.btShowCreds.setOnClickListener {
-            viewModel.loginUser(
-                viewBinding.etLog.text.toString(),
-                viewBinding.etPass.text.toString()
-            )
-        }
-
-        viewModel.nav.observe(viewLifecycleOwner) {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.activity_container, HomeFragment())
-                .commit()
-        }
     }
-
-
 }
