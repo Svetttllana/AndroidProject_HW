@@ -14,7 +14,8 @@ import javax.inject.Inject
 class ItemsRepositoryImpl @Inject constructor() : ItemsReposetory {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override  fun getData(): List<ItemsModel> {
+    override suspend fun getData(): List<ItemsModel> {
+        return withContext(Dispatchers.IO) {
 
             val time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))
             val listItems = listOf<ItemsModel>(
@@ -41,8 +42,10 @@ class ItemsRepositoryImpl @Inject constructor() : ItemsReposetory {
                 ItemsModel(R.drawable.siamese, "Siamse", "this is clever cat", time),
                 ItemsModel(R.drawable.sphynx, "Sphynx", "very affectionate cat", time)
             )
-            return listItems
-        }
 
+            listItems
+        }
     }
+
+}
 
