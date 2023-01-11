@@ -4,16 +4,15 @@ import com.example.androidproject_hw.model.UserModel
 
 interface AuthRepository {
 
-    fun loginUser(userName: String, userPassword: String)
+    suspend  fun loginUser(userName: String, userPassword: String)
 
+    suspend  fun showUseCreds(): UserModel
 
-    fun showUseCreds(): UserModel
+    suspend fun doesUserExist(): Boolean
 
-    fun doesUserExist(): Boolean
+    suspend  fun userLogout()
 
-    fun userLogout()
+    suspend   fun saveOnBoard(onBoard:String)
 
-    fun saveOnBoard(onBoard:String)
-
-    fun doesOnBoardExists():Boolean
+    suspend  fun doesOnBoardExists():Boolean
 }

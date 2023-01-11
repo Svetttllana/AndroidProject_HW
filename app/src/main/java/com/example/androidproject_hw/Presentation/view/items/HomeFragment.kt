@@ -42,19 +42,20 @@ class HomeFragment : Fragment() {
         viewModel.showUserData()
 
 
-        binding.btgoToNext.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.activity_container, OnBoardingFragment())
-                .commit()
-        }
+//        binding.btgoToNext.setOnClickListener {
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.activity_container, OnBoardingFragment())
+//                .commit()
+//        }
 
         viewModel.userCreds.observe(viewLifecycleOwner) {
             binding.tvUserCreads.text = "${it.userName} \n ${it.userPassword}"
         }
-        binding.btgoToNext.setOnClickListener { viewModel.checkOnBoardFragm() }
+        binding.btgoToNext.setOnClickListener {
+            viewModel.checkOnBoardFragm() }
 
 
-        viewModel.check.observe(viewLifecycleOwner){
+        viewModel.checkk.observe(viewLifecycleOwner){
             parentFragmentManager.beginTransaction()
                 .replace(
                     R.id.activity_container,

@@ -1,11 +1,14 @@
 package com.example.androidproject_hw.Presentation.view.items
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.androidproject_hw.domain.auth.AuthInteractor
 import com.example.androidproject_hw.model.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,17 +19,31 @@ class HomeViewModel @Inject constructor(
     private val _userCreds = MutableLiveData<UserModel>()
     val userCreds:LiveData<UserModel> = _userCreds
 
-    private val _check = MutableLiveData<Boolean>()
-    val check:LiveData<Boolean> = _check
+    private val _checkk = MutableLiveData<Boolean>()
+    val checkk:LiveData<Boolean> = _checkk
 
 
 
     fun showUserData(){
-_userCreds.value=authInteractor.getUserCreds()
+        viewModelScope.launch {
+            try {
+                _userCreds.value=authInteractor.getUserCreds()
+            }catch (e:Exception){
+                Log.w("exeption", "showUserData FAILED")
+            }
+
+        }
+
     }
 
     fun checkOnBoardFragm(){
-        _check.value= authInteractor.checkUserExists()
+        viewModelScope.launch {
+            try {
+                _checkk.value= authInteractor.checkUserExists()
+            }catch (e:Exception){  Log.w("exeption", "checkOnBoardFragm FAILED")}
+
+        }
+
 
     }
 

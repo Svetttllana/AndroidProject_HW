@@ -1,16 +1,19 @@
 package com.example.androidproject_hw.Presentation.view.auth
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.domain.auth.AuthInteractor
 import com.example.androidproject_hw.model.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authInteractor: AuthInteractor):ViewModel() {
+class LoginViewModel @Inject constructor(private val authInteractor: AuthInteractor) : ViewModel() {
 
     private val _nav = MutableLiveData<Unit?>()
     val nav: LiveData<Unit?> = _nav
@@ -21,13 +24,25 @@ class LoginViewModel @Inject constructor(private val authInteractor: AuthInterac
 
     fun loginUser(userName: String, userPassword: String) {
 
-        authInteractor.loginUser(userName, userPassword)
-        _nav.value = Unit
+        viewModelScope.launch {
+            try {
+                authInteractor.loginUser(userName, userPassword)
+                _nav.value = Unit
+            } catch (e: Exception) {
+                Log.w("exeption", "loginUser FAILED")
+            }
+
+        }
     }
 
     fun loginCheck() {
-         _check.value=Unit
+        viewModelScope.launch {
+            try {
 
-
+            }catch (e:Exception){
+                Log.w("exeption","loginCheck FAILED" )
+            }
+            _check.value = Unit
+        }
     }
 }
