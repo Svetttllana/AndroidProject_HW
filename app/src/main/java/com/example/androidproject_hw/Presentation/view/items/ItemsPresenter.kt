@@ -14,6 +14,7 @@ class ItemsPresenter @Inject constructor(
     private lateinit var itemsView: ItemsView
 
     fun setVIew(itemsFragment1: ItemsFragment1) {
+
         itemsView = itemsFragment1
     }
 

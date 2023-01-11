@@ -4,36 +4,52 @@ import com.example.androidproject_hw.domain.auth.AuthRepository
 import com.example.androidproject_hw.model.UserModel
 import com.example.androidproject_hw.data.sgaredPrefs.SharedPreferencesHelper
 import com.example.androidproject_hw.model.OnBoardingModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val sharedPreferencesHelper: SharedPreferencesHelper
-):AuthRepository {
-    override fun loginUser(userName: String, userPassword: String) {
-sharedPreferencesHelper.saveUserName(userName)
-sharedPreferencesHelper.saveUserPassword(userPassword)
+) : AuthRepository {
+    override suspend fun loginUser(userName: String, userPassword: String) {
+        withContext(Dispatchers.IO) {
+            sharedPreferencesHelper.saveUserName(userName)
+            sharedPreferencesHelper.saveUserPassword(userPassword)
+        }
     }
 
-    override fun showUseCreds():UserModel {
-        return sharedPreferencesHelper.getUserCreds()
+    override suspend fun showUseCreds(): UserModel {
+        return withContext(Dispatchers.IO) {
+            sharedPreferencesHelper.getUserCreds()
+        }
     }
 
-    override fun doesUserExist(): Boolean {
-      return  sharedPreferencesHelper.checkUserExists()
+
+    override suspend fun doesUserExist(): Boolean {
+        return withContext(Dispatchers.IO) {
+            sharedPreferencesHelper.checkUserExists()
+        }
     }
 
-    override fun userLogout() {
-        sharedPreferencesHelper.removeUser()
+    override suspend fun userLogout() {
+        withContext(Dispatchers.IO){
+            sharedPreferencesHelper.removeUser()
+        }
+
     }
 
-    override fun saveOnBoard(onBoard: String) {
-        sharedPreferencesHelper.saveOnBoarding(onBoard)
+    suspend override fun saveOnBoard(onBoard: String) {
+        withContext(Dispatchers.IO){
+            sharedPreferencesHelper.saveOnBoarding(onBoard)
+        }
+
     }
 
-    override fun daesOnBoardExists(): Boolean {
-    return   sharedPreferencesHelper.checknBoardFragment()
+    suspend override fun daesOnBoardExists(): Boolean {
+        return withContext(Dispatchers.IO) {
+            sharedPreferencesHelper.checknBoardFragment()
+        }
     }
-
 
 
 }

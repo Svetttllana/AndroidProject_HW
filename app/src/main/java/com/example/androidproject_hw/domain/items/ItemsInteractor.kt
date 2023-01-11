@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class ItemsInteractor @Inject constructor(private val itemsReposetory: ItemsReposetory) {
 
-    fun getData():List<ItemsModel>{
+  fun getData():List<ItemsModel>{
       return itemsReposetory.getData()
     }
 

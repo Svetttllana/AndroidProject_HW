@@ -1,6 +1,10 @@
 package com.example.androidproject_hw.Presentation.view.auth
 
+import android.util.Log
 import com.example.androidproject_hw.domain.auth.AuthInteractor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class OnBoardingPresenter @Inject constructor(
@@ -11,17 +15,54 @@ class OnBoardingPresenter @Inject constructor(
 
 
     fun setView(onBoardingFragment: OnBoardingFragment) {
-        onBoardingView = onBoardingFragment
+        CoroutineScope(Dispatchers.Main).launch {
+            val job = launch {
+                try {
+                    onBoardingView = onBoardingFragment
+                }catch (e:Exception){
+                    Log.w("exeption", "setView FAILED")
+                }
+
+            }
+            job.join()
+            job.cancel()
+        }
+
 
     }
 
     fun goToItemsFragment() {
-        onBoardingView.goToItemsFragment()
+        CoroutineScope(Dispatchers.Main).launch {
+            val job = launch {
+                try {
+                    onBoardingView.goToItemsFragment()
+                }catch (e:Exception){
+                    Log.w("exeption", "goToItemsFragment FAILED")
+                }
+
+            }
+            job.join()
+            job.cancel()
+        }
+
 
     }
 fun saveOnBoarding(onBoard:String){
-    authInteractor.saveOnBoarding(onBoard)
-    onBoardingView.onBoardSave()
+
+    CoroutineScope(Dispatchers.Main).launch {
+        val job = launch {
+            try {
+                authInteractor.saveOnBoarding(onBoard)
+                onBoardingView.onBoardSave()
+            }catch (e:Exception){
+                Log.w("exeption", " saveOnBoarding FAILED")
+            }
+
+        }
+        job.join()
+        job.cancel()
+    }
+
 
 }
 
