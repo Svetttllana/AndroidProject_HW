@@ -43,7 +43,7 @@ class ItemsRepositoryImpl @Inject constructor() : ItemsReposetory {
                 ItemsModel(R.drawable.siamese, "Siamse", "this is clever cat", time),
                 ItemsModel(R.drawable.sphynx, "Sphynx", "very affectionate cat", time)
             )
-            return@withContext listItems
+             listItems
         }
     }
 }

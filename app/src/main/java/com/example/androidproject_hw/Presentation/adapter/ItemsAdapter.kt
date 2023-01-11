@@ -15,7 +15,9 @@ class ItemsAdapter(private var itemsListener: ItemsListener): RecyclerView.Adapt
     private var listItems = mutableListOf<ItemsModel>()
 
     fun submitList(list: List<ItemsModel>){
-        this.listItems=list.toMutableList()
+        listItems.clear()
+        listItems.addAll(list.toMutableList())
+        this.notifyDataSetChanged()
 
     }
 
