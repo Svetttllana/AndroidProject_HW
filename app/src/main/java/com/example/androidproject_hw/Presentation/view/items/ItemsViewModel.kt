@@ -58,7 +58,7 @@ class ItemsViewModel @Inject constructor(private val itemsInteractor: ItemsInter
     fun elementClicked( imageView: Int,title: String, description: String, time:String) {
 
         viewModelScope.launch {
-            _bundl.value = NavigateWithBundle(title = title, description = description, image = imageView, time = time)
+            _bundl.value = NavigateWithBundle(title = title, description = description, image = imageView, time = time, destinationById = R.id.action_itemsFragment1_to_detailsFragment12)
         }
 
     }
@@ -69,6 +69,8 @@ data class NavigateWithBundle(
     val image: Int,
     val title: String,
     val description: String,
-    val time: String
+    val time: String,
+    val destinationById: Int
+
 
 )

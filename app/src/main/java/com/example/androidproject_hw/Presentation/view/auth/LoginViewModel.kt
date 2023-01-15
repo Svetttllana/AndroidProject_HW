@@ -15,19 +15,19 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val authInteractor: AuthInteractor) : ViewModel() {
 
-    private val _nav = MutableLiveData<Unit?>()
-    val nav: LiveData<Unit?> = _nav
+    private val _nav = MutableLiveData<Int?>()
+    val nav: LiveData<Int?> = _nav
 
 
-    private val _check = MutableLiveData<Unit>()
-    val check: LiveData<Unit> = _check
+    private val _check = MutableLiveData<Int?>()
+    val check: LiveData<Int?> = _check
 
     fun loginUser(userName: String, userPassword: String) {
 
         viewModelScope.launch {
             try {
                 authInteractor.loginUser(userName, userPassword)
-                _nav.value = Unit
+                _nav.value = R.id.action_loginFragment_to_homeFragment
             } catch (e: Exception) {
                 Log.w("exeption", "loginUser FAILED")
             }
@@ -42,7 +42,11 @@ class LoginViewModel @Inject constructor(private val authInteractor: AuthInterac
             }catch (e:Exception){
                 Log.w("exeption","loginCheck FAILED" )
             }
-            _check.value = Unit
+            _check.value = R.navigation.main_graph
         }
+    }
+
+    fun userNavigatedValue(){
+        _nav.value=null
     }
 }

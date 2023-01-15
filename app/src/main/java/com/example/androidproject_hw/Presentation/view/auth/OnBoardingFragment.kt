@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentOnBoardingBinding
+import com.example.androidproject_hw.utils.NavHelper.changeGraph
+import com.example.androidproject_hw.utils.NavHelper.navigated
 import dagger.hilt.android.AndroidEntryPoint
 const val ON_BOARDING = "ON_BOARDING"
 @AndroidEntryPoint
@@ -39,15 +42,16 @@ binding.btNextFragm.setOnClickListener{
     viewModel.saveOnBoarding(ON_BOARDING)
 }
         viewModel.nav.observe(viewLifecycleOwner){
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.activity_container, ItemsFragment1())
-                .commit()
+            if (it != null) {
+                changeGraph(it)
+            }
+
         }
 
    viewModel.save.observe(viewLifecycleOwner){
-       parentFragmentManager.beginTransaction()
-           .replace(R.id.activity_container, ItemsFragment1())
-           .commit()
+       if (it != null) {
+           changeGraph(it)
+       }
    }
 
 

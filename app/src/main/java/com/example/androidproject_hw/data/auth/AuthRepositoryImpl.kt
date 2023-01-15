@@ -48,4 +48,10 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun navigation() {
+        withContext(Dispatchers.IO){
+
+        }
+    }
+
 }

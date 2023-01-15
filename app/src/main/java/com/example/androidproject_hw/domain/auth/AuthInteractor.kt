@@ -33,5 +33,9 @@ class AuthInteractor @Inject constructor(
         return authRepository.doesOnBoardExists()
     }
 
+    suspend  fun navigation(){
+        return authRepository.navigation()
+    }
+
 
 }

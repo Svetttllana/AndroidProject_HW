@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.androidproject_hw.Presentation.view.auth.LoginFragment
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentDetails1Binding
@@ -13,6 +14,8 @@ import com.example.androidproject_hw.utils.AppConstans.DESCRIPTION
 import com.example.androidproject_hw.utils.AppConstans.IMAGE
 import com.example.androidproject_hw.utils.AppConstans.TIME
 import com.example.androidproject_hw.utils.AppConstans.TITLE
+import com.example.androidproject_hw.utils.NavHelper.changeGraph
+import com.example.androidproject_hw.utils.NavHelper.navigated
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -62,14 +65,15 @@ class DetailsFragment1 : Fragment() {
         }
 
         viewModel.nav.observe(viewLifecycleOwner) {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.activity_container, LoginFragment())
-                .commit()
+
+            if (it != null) {
+                changeGraph(it)
+
+
+            }
+
 
         }
-
-
     }
-
 
 }

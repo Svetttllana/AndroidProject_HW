@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 
 import com.example.androidproject_hw.Presentation.view.items.DetailsFragment1
 import com.example.androidproject_hw.Presentation.view.items.HomeFragment
 import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentLoginBinding
+import com.example.androidproject_hw.utils.NavHelper.changeGraph
+import com.example.androidproject_hw.utils.NavHelper.navigated
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -59,29 +62,34 @@ class LoginFragment : Fragment() {
                 viewBinding.etPass.error = getString(R.string.PassCantBeEmpty)
             } else {
                 viewModel.check.observe(viewLifecycleOwner) {
-                    parentFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.activity_container, ItemsFragment1())
-                        .commit()
+
+                    if (it != null) {
+                        changeGraph(it)
+                    }
+
+                    //findNavController().setGraph(R.navigation.main_graph)
+
                 }
             }
         }
 
 
 
-            viewBinding.btShowCreds.setOnClickListener {
-                viewModel.loginUser(
-                    viewBinding.etLog.text.toString(),
-                    viewBinding.etPass.text.toString()
-                )
-            }
-
-            viewModel.nav.observe(viewLifecycleOwner) {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.activity_container, HomeFragment())
-                    .commit()
-            }
+        viewBinding.btShowCreds.setOnClickListener {
+            viewModel.loginUser(
+                viewBinding.etLog.text.toString(),
+                viewBinding.etPass.text.toString()
+            )
         }
 
+        viewModel.nav.observe(viewLifecycleOwner) {
+            if (it != null) {
+                navigated(it)
+                viewModel.userNavigatedValue()
 
+            }
+        }
     }
+
+
+}

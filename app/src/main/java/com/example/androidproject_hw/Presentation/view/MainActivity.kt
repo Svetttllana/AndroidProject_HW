@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.example.androidproject_hw.Presentation.view.auth.LoginFragment
 import com.example.androidproject_hw.Presentation.view.items.HomeFragment
 import com.example.androidproject_hw.R
@@ -17,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMain2Binding? = null
     private val viewModel: MainViewModel by viewModels()
 
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +31,17 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.checkUserExists()
 
-        viewModel.userExists.observe(this) {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(
-                R.id.activity_container,
-                when (it) {
-                    true -> HomeFragment()
-                    false -> LoginFragment()
-                }
-            )
-                .commit()
+        val navHostFragm = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
+                as NavHostFragment
+
+        navController = navHostFragm.navController
+
+
+
+        viewModel.nav.observe(this) {
+
+            navController.setGraph(it)
+
         }
 
     }

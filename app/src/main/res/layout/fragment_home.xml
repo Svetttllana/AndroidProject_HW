@@ -32,8 +32,20 @@
         app:barrierMargin="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_userCreads"
-        app:layout_constraintVertical_bias="0.471" />
+        app:layout_constraintVertical_bias="0.608" />
+
+    <Button
+        android:id="@+id/btGoToOnBoarding"
+        android:layout_width="365dp"
+        android:layout_height="59dp"
+        android:text="Go to on boarding"
+        android:backgroundTint="#74711D1D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btgoToNext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

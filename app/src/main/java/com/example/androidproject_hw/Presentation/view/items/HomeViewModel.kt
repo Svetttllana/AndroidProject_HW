@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.androidproject_hw.R
 import com.example.androidproject_hw.domain.auth.AuthInteractor
 import com.example.androidproject_hw.model.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +22,9 @@ class HomeViewModel @Inject constructor(
 
     private val _checkk = MutableLiveData<Boolean>()
     val checkk:LiveData<Boolean> = _checkk
+
+    private val _nav = MutableLiveData<Int?>()
+    val nav:LiveData<Int?> = _nav
 
 
 
@@ -44,6 +48,15 @@ class HomeViewModel @Inject constructor(
 
         }
 
+
+    }
+
+    fun navigation(){
+        viewModelScope.launch {
+            try {
+                _nav.value = R.navigation.main_graph
+            }catch (e:Exception){Log.w("exeption", "navigation FAILED")}
+        }
 
     }
 

@@ -15,4 +15,7 @@ interface AuthRepository {
     suspend   fun saveOnBoard(onBoard:String)
 
     suspend  fun doesOnBoardExists():Boolean
+
+    suspend  fun navigation()
+
 }

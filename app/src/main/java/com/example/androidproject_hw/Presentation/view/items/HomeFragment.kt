@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.androidproject_hw.Presentation.view.auth.OnBoardingFragment
 
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentHomeBinding
 import com.example.androidproject_hw.model.UserModel
+import com.example.androidproject_hw.utils.NavHelper.changeGraph
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -42,33 +44,41 @@ class HomeFragment : Fragment() {
         viewModel.showUserData()
 
 
-//        binding.btgoToNext.setOnClickListener {
-//            parentFragmentManager.beginTransaction()
-//                .replace(R.id.activity_container, OnBoardingFragment())
-//                .commit()
-//        }
+        binding.btGoToOnBoarding.setOnClickListener {
+findNavController().navigate(R.id.action_homeFragment_to_onBoardingFragment2)
+
+        }
 
         viewModel.userCreds.observe(viewLifecycleOwner) {
             binding.tvUserCreads.text = "${it.userName} \n ${it.userPassword}"
         }
         binding.btgoToNext.setOnClickListener {
-            viewModel.checkOnBoardFragm() }
+            viewModel.checkOnBoardFragm()
+        }
 
 
-        viewModel.checkk.observe(viewLifecycleOwner){
-            parentFragmentManager.beginTransaction()
-                .replace(
-                    R.id.activity_container,
-                    when (it) {
-                        true -> ItemsFragment1()
-                        false -> OnBoardingFragment()
-                    }
-                ).commit()
+        viewModel.nav.observe(viewLifecycleOwner) {
+            if (it != null) {
+                changeGraph(it)
+            }
+
+
+//            findNavController().navigate(
+//                when(it){
+//                    true ->null!!
+//                     false ->   R.id.action_homeFragment_to_onBoardingFragment2
+//                }
+//            )
+
+
+
         }
 
 
     }
 }
+
+
 
 
 
