@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.androidproject_hw.Presentation.view.auth.LoginFragment
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentDetails1Binding
@@ -64,9 +65,10 @@ class DetailsFragment1 : Fragment(), DetailsView {
     }
 
     override fun logoutUser() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.activity_container, LoginFragment())
-            .commit()
+        findNavController().setGraph(R.navigation.auth_graph)
+//        parentFragmentManager.beginTransaction()
+//            .replace(R.id.activity_container, LoginFragment())
+//            .commit()
     }
 
     override fun displayItemData(title: String, description: String, time: String, image: Int) {

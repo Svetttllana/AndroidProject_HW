@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.navigation.fragment.findNavController
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentItems1Binding
 import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
@@ -99,13 +100,11 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
         bundle.putInt(AppConstans.IMAGE, imageView)
         bundle.putString(TIME, time)
 
-        detailsFragment.arguments = bundle
 
-        parentFragmentManager
-            .beginTransaction()
-            .replace(R.id.activity_container, detailsFragment)
-            .addToBackStack(DETAILS)
-            .commit()
+        findNavController().navigate(
+            R.id.action_itemsFragment1_to_detailsFragment1, bundle
+        )
+
 
     }
 

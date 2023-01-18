@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.androidproject_hw.Presentation.view.items.DetailsFragment1
 import com.example.androidproject_hw.Presentation.view.items.HomeFragment
 import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
@@ -53,9 +54,7 @@ class LoginFragment : Fragment(), LoginVIew {
                 viewBinding.etPass.error = getString(R.string.PassCantBeEmpty)
             } else {
                 parentFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.activity_container, ItemsFragment1())
-                    .commit()
+                findNavController().setGraph(R.navigation.main_graph)
 
             }
 
@@ -70,12 +69,9 @@ class LoginFragment : Fragment(), LoginVIew {
         }
 
 
-
     }
 
     override fun userLoggedIn() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.activity_container, HomeFragment())
-            .commit()
+        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
     }
 }
