@@ -25,7 +25,7 @@ class OnBoardingViewModel @Inject constructor(
     fun goToItemsFragment() {
         viewModelScope.launch {
             try {
-                _nav.value = R.navigation.main_graph
+                _nav.value = R.id.action_onBoardingFragment_to_itemsFragment1
             } catch (e: Exception) {
                 Log.w("exeption", "goToItemsFragment FAILED")
             }
@@ -35,17 +35,17 @@ class OnBoardingViewModel @Inject constructor(
 
     }
 
-    fun saveOnBoarding(onBoard: String) {
-        viewModelScope.launch {
-            try {
-                authInteractor.saveOnBoard(onBoard)
-                _save.value = R.navigation.main_graph
-            } catch (e: Exception) {
-                Log.w("exeption", "saveOnBoarding FAILED")
-            }
-
-
-        }
-
-    }
+//    fun saveOnBoarding(onBoard: String) {
+//        viewModelScope.launch {
+//            try {
+//                authInteractor.saveOnBoard(onBoard)
+//                _save.value = R.id.action_onBoardingFragment_to_itemsFragment1
+//            } catch (e: Exception) {
+//                Log.w("exeption", "saveOnBoarding FAILED")
+//            }
+//
+//
+//        }
+//
+//    }
 }

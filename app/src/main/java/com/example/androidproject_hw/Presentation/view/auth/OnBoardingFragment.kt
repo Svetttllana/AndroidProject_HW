@@ -39,20 +39,20 @@ class OnBoardingFragment : Fragment() {
 
 binding.btNextFragm.setOnClickListener{
    viewModel.goToItemsFragment()
-    viewModel.saveOnBoarding(ON_BOARDING)
+   // viewModel.saveOnBoarding(ON_BOARDING)
 }
         viewModel.nav.observe(viewLifecycleOwner){
             if (it != null) {
-                changeGraph(it)
+                navigated(it)
             }
 
         }
 
-   viewModel.save.observe(viewLifecycleOwner){
-       if (it != null) {
-           changeGraph(it)
-       }
-   }
+//   viewModel.save.observe(viewLifecycleOwner){
+//       if (it != null) {
+//           changeGraph(it)
+//       }
+//   }
 
 
     }

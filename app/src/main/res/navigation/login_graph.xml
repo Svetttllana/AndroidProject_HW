@@ -17,14 +17,5 @@
         android:id="@+id/homeFragment"
         android:name="com.example.androidproject_hw.Presentation.view.items.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_onBoardingFragment2"
-            app:destination="@id/onBoardingFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/onBoardingFragment"
-        android:name="com.example.androidproject_hw.Presentation.view.auth.OnBoardingFragment"
-        android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" />
+        tools:layout="@layout/fragment_home" />
 </navigation>

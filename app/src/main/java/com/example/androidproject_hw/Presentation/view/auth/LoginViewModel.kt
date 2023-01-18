@@ -19,15 +19,15 @@ class LoginViewModel @Inject constructor(private val authInteractor: AuthInterac
     val nav: LiveData<Int?> = _nav
 
 
-    private val _check = MutableLiveData<Int?>()
-    val check: LiveData<Int?> = _check
+    private val _check = MutableLiveData<Unit>()
+    val check: LiveData<Unit> = _check
 
     fun loginUser(userName: String, userPassword: String) {
 
         viewModelScope.launch {
             try {
                 authInteractor.loginUser(userName, userPassword)
-                _nav.value = R.id.action_loginFragment_to_homeFragment
+                _nav.value =R.id.action_loginFragment_to_homeFragment
             } catch (e: Exception) {
                 Log.w("exeption", "loginUser FAILED")
             }
@@ -42,7 +42,7 @@ class LoginViewModel @Inject constructor(private val authInteractor: AuthInterac
             }catch (e:Exception){
                 Log.w("exeption","loginCheck FAILED" )
             }
-            _check.value = R.navigation.main_graph
+            _check.value = Unit
         }
     }
 

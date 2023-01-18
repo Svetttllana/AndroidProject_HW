@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 
 import com.example.androidproject_hw.Presentation.view.items.DetailsFragment1
@@ -23,6 +25,7 @@ import javax.inject.Inject
 class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModels()
+    private lateinit var navController: NavController
 
     private var _viewBinding: FragmentLoginBinding? = null
     private val viewBinding get() = _viewBinding!!
@@ -41,6 +44,10 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        val navHostFragm = parentFragmentManager.findFragmentById(R.id.loginFragment)
+//                as NavHostFragment
+
+     //   navController = navHostFragm.navController
 
 
 
@@ -62,16 +69,18 @@ class LoginFragment : Fragment() {
                 viewBinding.etPass.error = getString(R.string.PassCantBeEmpty)
             } else {
                 viewModel.check.observe(viewLifecycleOwner) {
-
-                    if (it != null) {
-                        changeGraph(it)
+                    findNavController().setGraph(R.navigation.main_graph)
                     }
 
-                    //findNavController().setGraph(R.navigation.main_graph)
+//                    if (it != null) {
+//                        changeGraph(it)
+//                    }
+
+
 
                 }
             }
-        }
+
 
 
 

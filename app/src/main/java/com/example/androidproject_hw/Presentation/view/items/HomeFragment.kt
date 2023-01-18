@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
 
 
         binding.btGoToOnBoarding.setOnClickListener {
-findNavController().navigate(R.id.action_homeFragment_to_onBoardingFragment2)
+findNavController().setGraph(R.navigation.main_graph)
 
         }
 
@@ -58,6 +58,7 @@ findNavController().navigate(R.id.action_homeFragment_to_onBoardingFragment2)
 
 
         viewModel.nav.observe(viewLifecycleOwner) {
+
             if (it != null) {
                 changeGraph(it)
             }
