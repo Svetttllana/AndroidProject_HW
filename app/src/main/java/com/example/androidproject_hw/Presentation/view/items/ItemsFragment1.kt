@@ -9,15 +9,20 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentItems1Binding
 import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
 import com.example.androidproject_hw.utils.AppConstans
 import com.example.androidproject_hw.utils.AppConstans.DESCRIPTION
 import com.example.androidproject_hw.utils.AppConstans.DETAILS
+import com.example.androidproject_hw.utils.AppConstans.EMAIL
+import com.example.androidproject_hw.utils.AppConstans.ID
+import com.example.androidproject_hw.utils.AppConstans.NAME
 
 import com.example.androidproject_hw.utils.AppConstans.TIME
 import com.example.androidproject_hw.utils.AppConstans.TITLE
+import com.example.androidproject_hw.utils.AppConstans.USER_NAME
 import com.example.clswrk_androidprojekt.adapter.ItemsAdapter
 import com.example.clswrk_androidprojekt.model.ItemsModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +51,7 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -55,6 +60,7 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
         itemsAdapter = ItemsAdapter(this)
 
         viewBinding.recyclerView.adapter = itemsAdapter
+        viewBinding.recyclerView.layoutManager =LinearLayoutManager(context)
 
         itemsPresenter.getData()
 
@@ -68,12 +74,12 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
 
 
     override fun onElementSelected(
-        title: String,
-        description: String,
-        imageView: Int,
-        time: String
+        name: String,
+        userName: String,
+        email: String,
+        id: Int,
     ) {
-        itemsPresenter.elementSelected(title, description, imageView, time)
+        itemsPresenter.elementSelected(name,userName, email, id)
 
     }
 
@@ -87,18 +93,18 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
     }
 
     override fun goToDetails(
-        title: String,
-        description: String,
-        imageView: Int,
-        time: String
+        name: String,
+        userName: String,
+        email: String,
+        id: Int,
     ) {
 
-        val detailsFragment = DetailsFragment1()
+
         val bundle = Bundle()
-        bundle.putString(TITLE, title)
-        bundle.putString(DESCRIPTION, description)
-        bundle.putInt(AppConstans.IMAGE, imageView)
-        bundle.putString(TIME, time)
+        bundle.putString(NAME, name)
+        bundle.putString(EMAIL, email)
+        bundle.putInt(ID, id)
+        bundle.putString(USER_NAME, userName)
 
 
         findNavController().navigate(

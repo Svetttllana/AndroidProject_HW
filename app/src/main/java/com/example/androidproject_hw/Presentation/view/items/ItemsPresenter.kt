@@ -76,15 +76,16 @@ class ItemsPresenter @Inject constructor(
     }
 
     fun elementSelected(
-        title: String,
-        description: String,
-        imageView: Int,
-        time: String
+        name: String,
+        userName: String,
+        email: String,
+        id: Int,
     ) {
         CoroutineScope(Dispatchers.Main).launch {
             val job = launch {
                 try {
-                    itemsView.goToDetails(title=title, description=description, imageView=imageView, time=time)
+                    itemsView.goToDetails(name, userName, email, id)
+
                 }catch (e:Exception){
                     Log.w("exeption", " checkOnBoardFragm FAILED")
                 }

@@ -47,27 +47,26 @@ class DetailsPresenter @Inject constructor(
 
     }
 
-    fun getArguments(title: String?, description: String?, time: String?, image: Int) {
+    fun getArguments(name: String?, userName: String?, email: String?) {
 
         CoroutineScope(Dispatchers.Main).launch {
             val job = launch {
                 try {
                     detailsView.displayItemData(
-                        when (title.isNullOrBlank()) {
+                        when (name.isNullOrBlank()) {
 
                             true -> "no data"
-                            false -> title
+                            false -> name
                         },
-                        when (description.isNullOrEmpty()) {
+                        when (userName.isNullOrEmpty()) {
                             true -> " no date"
-                            false -> description
+                            false -> userName
 
                         },
-                        when (time.isNullOrEmpty()) {
+                        when (email.isNullOrEmpty()) {
                             true -> "no date"
-                            false -> time
+                            false -> email
                         },
-                        image
                     )
                 } catch (e: Exception) {
                     Log.w("exeption", " getArguments FAILED")

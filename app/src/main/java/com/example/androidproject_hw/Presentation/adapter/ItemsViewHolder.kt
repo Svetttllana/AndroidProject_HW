@@ -20,12 +20,19 @@ class ItemsViewHolder(
 
     fun bind(itemsModel: ItemsModel) {
 
+        viewBinding.tvName.text = "Name: " + itemsModel.name
+        viewBinding.tvUsername.text = "Username: " + itemsModel.username
+        viewBinding.tvEmail.text = "Email: " + itemsModel.email
+        viewBinding.tvPhone.text = "Phone: " + itemsModel.phone
+        viewBinding.tvAddress.text = "Address: " + itemsModel.city + ", " + itemsModel.street + "str., " + itemsModel.suite
+        viewBinding.tvZipcode.text = "Zipcode: " + itemsModel.zipcode
+        viewBinding.tvCompany.text = "Company: " + itemsModel.nameCompany
+        viewBinding.tvGeo.text = "lat: " + itemsModel.lat+ " , lng: " + itemsModel.lng
+        viewBinding.tvWebsite.text = "website " + itemsModel.website
+        viewBinding.tvBs.text = "bs: " + itemsModel.bs
+        viewBinding.tvCatchPhrase.text = "Catch phrase: " + itemsModel.catchPhrase
 
-       viewBinding.tvTitle.text = itemsModel.title
-       viewBinding.ivImage.setBackgroundResource(itemsModel.image)
-        viewBinding.tvTime.text = itemsModel.time
-
-      viewBinding.ivImage.setOnClickListener {
+      itemView.setOnClickListener {
 
             itemsListener.onClick()
         }
@@ -34,7 +41,10 @@ class ItemsViewHolder(
 
         itemView.setOnClickListener {
             itemsListener.onElementSelected(
-                itemsModel.title, itemsModel.description, itemsModel.image, itemsModel.time
+                itemsModel.name,
+                itemsModel.username,
+                itemsModel.email,
+                itemsModel.id
             )
 
         }

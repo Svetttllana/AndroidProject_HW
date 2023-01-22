@@ -5,15 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.androidproject_hw.Presentation.view.auth.LoginFragment
 import com.example.androidproject_hw.R
 import com.example.androidproject_hw.databinding.FragmentDetails1Binding
-import com.example.androidproject_hw.utils.AppConstans.DESCRIPTION
-import com.example.androidproject_hw.utils.AppConstans.IMAGE
-import com.example.androidproject_hw.utils.AppConstans.TIME
-import com.example.androidproject_hw.utils.AppConstans.TITLE
+import com.example.androidproject_hw.utils.AppConstans.EMAIL
+import com.example.androidproject_hw.utils.AppConstans.NAME
+import com.example.androidproject_hw.utils.AppConstans.USER_NAME
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -34,8 +31,6 @@ class DetailsFragment1 : Fragment(), DetailsView {
 
         _viewBinding = FragmentDetails1Binding.inflate(inflater)
         return viewBinding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,17 +43,15 @@ class DetailsFragment1 : Fragment(), DetailsView {
 
         bundle?.let { safeBundle ->
             detailsPresenter.getArguments(
-                safeBundle.getString(TITLE),
-                safeBundle.getString(DESCRIPTION),
-                safeBundle.getString(TIME),
-                safeBundle.getInt(IMAGE)
-            )
+                safeBundle.getString(NAME),
+                safeBundle.getString(EMAIL),
+                safeBundle.getString(USER_NAME))
 
 
         }
 
 
-        viewBinding.btnLogout.setOnClickListener {
+        viewBinding.btLogout.setOnClickListener {
             detailsPresenter.logoutUser()
         }
 
@@ -66,16 +59,17 @@ class DetailsFragment1 : Fragment(), DetailsView {
 
     override fun logoutUser() {
         findNavController().setGraph(R.navigation.auth_graph)
-//        parentFragmentManager.beginTransaction()
-//            .replace(R.id.activity_container, LoginFragment())
-//            .commit()
+
     }
 
-    override fun displayItemData(title: String, description: String, time: String, image: Int) {
-        viewBinding.detailsTitle.text = title
-        viewBinding.detailsDescription.text = description
-        viewBinding.detailsTime.text = time
-        viewBinding.detailsImage.setBackgroundResource(image)
+    override fun displayItemData(
+        name: String, userName: String, email: String
+    ) {
+        viewBinding.tvName.text = name
+        viewBinding.tvEmail.text = email
+        viewBinding.tvUsername.text = userName
+
+
     }
 
 }

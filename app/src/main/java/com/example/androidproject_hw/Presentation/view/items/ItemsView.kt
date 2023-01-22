@@ -8,9 +8,10 @@ interface ItemsView {
 
     fun imageViewClicked(msg:Int)
 
-    fun goToDetails( title: String,
-                     description: String,
-                     imageView: Int,
-                     time: String)
+    fun goToDetails(name: String,
+                     userName: String,
+                    email: String,
+                     id: Int
+                     )
 
 }
