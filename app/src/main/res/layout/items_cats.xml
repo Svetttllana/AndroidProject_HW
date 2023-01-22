@@ -11,13 +11,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="389dp"
         android:layout_marginBottom="10dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_name"
-            android:layout_width="73dp"
-            android:layout_height="38dp"
+            android:layout_width="175dp"
+            android:layout_height="46dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="name"
@@ -32,36 +32,36 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_username"
-            android:layout_width="92dp"
-            android:layout_height="67dp"
+            android:layout_width="186dp"
+            android:layout_height="42dp"
             android:layout_marginStart="10dp"
             android:text="username"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.566"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.364" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_address"
-            android:layout_width="111dp"
-            android:layout_height="62dp"
+            android:layout_width="183dp"
+            android:layout_height="54dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="adress"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.251"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.863" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_zipcode"
-            android:layout_width="55dp"
+            android:layout_width="151dp"
             android:layout_height="47dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
@@ -69,25 +69,25 @@
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.58"
+            app:layout_constraintHorizontal_bias="0.836"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.957" />
+            app:layout_constraintVertical_bias="0.019" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_geo"
-            android:layout_width="103dp"
-            android:layout_height="20dp"
+            android:layout_width="177dp"
+            android:layout_height="45dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="geo"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.241"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.011" />
+            app:layout_constraintVertical_bias="0.667" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_phone"
@@ -99,15 +99,15 @@
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.976"
+            app:layout_constraintHorizontal_bias="0.696"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.797" />
+            app:layout_constraintVertical_bias="0.658" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_website"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
+            android:layout_width="191dp"
+            android:layout_height="54dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="website"
@@ -117,67 +117,67 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.445" />
+            app:layout_constraintVertical_bias="0.326" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_company"
-            android:layout_width="64dp"
-            android:layout_height="24dp"
+            android:layout_width="178dp"
+            android:layout_height="62dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="company"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.017"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.881" />
+            app:layout_constraintVertical_bias="0.484" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_email"
-            android:layout_width="93dp"
-            android:layout_height="48dp"
+            android:layout_width="182dp"
+            android:layout_height="45dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="email"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.237"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.287" />
+            app:layout_constraintVertical_bias="0.16" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_catchPhrase"
-            android:layout_width="111dp"
-            android:layout_height="52dp"
+            android:layout_width="160dp"
+            android:layout_height="58dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="catchPhrase"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.976"
+            app:layout_constraintHorizontal_bias="0.867"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.241" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_bs"
-            android:layout_width="197dp"
-            android:layout_height="150dp"
+            android:layout_width="178dp"
+            android:layout_height="64dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="bs"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.921"
+            app:layout_constraintHorizontal_bias="0.928"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.949" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
