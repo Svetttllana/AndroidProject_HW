@@ -47,7 +47,7 @@ class HomeFragment : Fragment(), HomeView {
 
         binding.btgoToOnBoarding.setOnClickListener {
             findNavController().setGraph(R.navigation.main_graph)
-            homePresenter.checkOnBoardFragm()
+        //    homePresenter.checkOnBoardFragm()
 
         }
 
@@ -61,22 +61,6 @@ class HomeFragment : Fragment(), HomeView {
 
     }
 
-    override fun onBoardingResult(onBoardExists: Boolean) {
-      //I do not know how to do this navigation, ask the teacher
-            when(onBoardExists){
-                true -> findNavController().setGraph(R.navigation.main_graph)
-                false -> findNavController().setGraph(R.navigation.main_graph)
-            }
-
-//        parentFragmentManager.beginTransaction()
-//            .replace(
-//                R.id.activity_container,
-//                when (onBoardExists) {
-//                    true -> ItemsFragment1()
-//                    false -> OnBoardingFragment()
-//                }
-//            ).commit()
-    }
 
 
 }

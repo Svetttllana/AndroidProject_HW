@@ -38,23 +38,28 @@ class OnBoardingFragment : Fragment(), OnBoardingView {
 
         onBoardingPresenter.setView(this)
 
+            onBoardingPresenter.checkOnBoardFragm()
+
         binding.btNextFragm.setOnClickListener {
-            onBoardingPresenter.goToItemsFragment()
+
             onBoardingPresenter.saveOnBoarding(ON_BOARDING)
         }
-
-
-    }
-
-    override fun goToItemsFragment() {
-        findNavController().navigate(R.id.action_onBoardingFragment_to_itemsFragment1)
-
     }
 
     override fun onBoardSave() {
-        findNavController().navigate(R.id.action_onBoardingFragment_to_itemsFragment1)
 
+            findNavController().navigate(R.id.action_onBoardingFragment_to_itemsFragment1)
+        }
+
+
+
+
+    override fun onBoardingResult(onBoardExists: Boolean) {
+
+            if (onBoardExists) {
+                findNavController().navigate(R.id.action_onBoardingFragment_to_itemsFragment1)
+
+
+        }
     }
-
-
 }

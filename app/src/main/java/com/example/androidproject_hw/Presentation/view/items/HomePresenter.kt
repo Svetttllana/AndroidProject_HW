@@ -49,25 +49,25 @@ class HomePresenter @Inject constructor(
 
 
     }
-
-    fun checkOnBoardFragm(){
-        CoroutineScope(Dispatchers.Main).launch {
-            val job = launch {
-                try {
-                    val doesOnBoarding = authInteractor.checkOnBoardFragm()
-                    homeView.onBoardingResult(doesOnBoarding)
-                }catch (e:Exception){
-                    Log.w("exeption", " checkOnBoardFragm FAILED")
-                }
-
-            }
-            job.join()
-            job.cancel()
-        }
-
-
-
-    }
+//
+//    fun checkOnBoardFragm(){
+//        CoroutineScope(Dispatchers.Main).launch {
+//            val job = launch {
+//                try {
+//                    val doesOnBoarding = authInteractor.checkOnBoardFragm()
+//                    homeView.onBoardingResult(doesOnBoarding)
+//                }catch (e:Exception){
+//                    Log.w("exeption", " checkOnBoardFragm FAILED")
+//                }
+//
+//            }
+//            job.join()
+//            job.cancel()
+//        }
+//
+//
+//
+//    }
 
 
 

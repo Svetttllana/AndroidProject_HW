@@ -31,22 +31,6 @@ class OnBoardingPresenter @Inject constructor(
 
     }
 
-    fun goToItemsFragment() {
-        CoroutineScope(Dispatchers.Main).launch {
-            val job = launch {
-                try {
-                    onBoardingView.goToItemsFragment()
-                }catch (e:Exception){
-                    Log.w("exeption", "goToItemsFragment FAILED")
-                }
-
-            }
-            job.join()
-            job.cancel()
-        }
-
-
-    }
 fun saveOnBoarding(onBoard:String){
 
     CoroutineScope(Dispatchers.Main).launch {
@@ -65,5 +49,24 @@ fun saveOnBoarding(onBoard:String){
 
 
 }
+
+    fun checkOnBoardFragm(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val job = launch {
+                try {
+                    val doesOnBoarding = authInteractor.checkOnBoardFragm()
+                    onBoardingView.onBoardingResult(doesOnBoarding)
+                }catch (e:Exception){
+                    Log.w("exeption", " checkOnBoardFragm FAILED")
+                }
+
+            }
+            job.join()
+            job.cancel()
+        }
+
+
+
+    }
 
 }
