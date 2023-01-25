@@ -5,9 +5,13 @@ import javax.inject.Inject
 
 class ItemsInteractor @Inject constructor(private val itemsReposetory: ItemsReposetory) {
 
-suspend  fun getData():List<ItemsModel>{
+suspend  fun getData(){
       return itemsReposetory.getData()
     }
 
 
+
+    suspend  fun showData(): List<ItemsModel>{
+        return itemsReposetory.showData()
+    }
 }

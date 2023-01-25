@@ -2,10 +2,11 @@ package com.example.androidproject_hw.Presentation.view.items
 
 
 import android.util.Log
-import com.example.androidproject_hw.R
+
 
 
 import com.example.androidproject_hw.domain.items.ItemsInteractor
+import com.example.clswrk_androidprojekt.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,9 +40,9 @@ class ItemsPresenter @Inject constructor(
         CoroutineScope(Dispatchers.Main).launch {
             val job = launch {
                 try {
-                    val listItems = itemsInteractor.getData()
+                    itemsInteractor.getData()
 
-                    itemsView.dataReceived(listItems)
+                    itemsView.dataReceived(itemsInteractor.showData())
                 }catch (e:Exception){
                     Log.w("exeption", " checkOnBoardFragm FAILED")
                 }

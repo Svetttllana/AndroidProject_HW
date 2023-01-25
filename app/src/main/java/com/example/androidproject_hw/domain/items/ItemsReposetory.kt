@@ -4,5 +4,7 @@ import com.example.clswrk_androidprojekt.model.ItemsModel
 
 interface ItemsReposetory {
 
-  suspend fun getData():List<ItemsModel>
+  suspend fun getData()
+
+  suspend fun showData():List<ItemsModel>
 }

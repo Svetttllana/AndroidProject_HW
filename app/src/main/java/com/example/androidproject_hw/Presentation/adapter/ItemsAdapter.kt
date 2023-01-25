@@ -3,9 +3,9 @@ package com.example.clswrk_androidprojekt.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidproject_hw.R
-import com.example.androidproject_hw.databinding.ItemsCatsBinding
+
 import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
+import com.example.clswrk_androidprojekt.databinding.ItemsCatsBinding
 import com.example.clswrk_androidprojekt.model.ItemsModel
 
 class ItemsAdapter(private var itemsListener: ItemsListener) :

@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.androidproject_hw.R
-import com.example.androidproject_hw.databinding.FragmentDetails1Binding
+
 import com.example.androidproject_hw.utils.AppConstans.EMAIL
 import com.example.androidproject_hw.utils.AppConstans.NAME
 import com.example.androidproject_hw.utils.AppConstans.USER_NAME
+import com.example.clswrk_androidprojekt.R
+import com.example.clswrk_androidprojekt.databinding.FragmentDetails1Binding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

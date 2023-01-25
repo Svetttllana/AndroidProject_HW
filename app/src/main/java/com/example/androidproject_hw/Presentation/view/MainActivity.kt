@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.androidproject_hw.Presentation.view.auth.LoginFragment
-import com.example.androidproject_hw.Presentation.view.items.HomeFragment
-import com.example.androidproject_hw.R
-import com.example.androidproject_hw.databinding.ActivityMain2Binding
+import com.example.clswrk_androidprojekt.R
+import com.example.clswrk_androidprojekt.databinding.ActivityMain2Binding
+
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

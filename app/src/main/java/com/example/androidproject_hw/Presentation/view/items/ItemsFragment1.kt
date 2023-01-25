@@ -7,23 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.androidproject_hw.R
-import com.example.androidproject_hw.databinding.FragmentItems1Binding
 import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
-import com.example.androidproject_hw.utils.AppConstans
-import com.example.androidproject_hw.utils.AppConstans.DESCRIPTION
-import com.example.androidproject_hw.utils.AppConstans.DETAILS
+
 import com.example.androidproject_hw.utils.AppConstans.EMAIL
 import com.example.androidproject_hw.utils.AppConstans.ID
 import com.example.androidproject_hw.utils.AppConstans.NAME
 
-import com.example.androidproject_hw.utils.AppConstans.TIME
-import com.example.androidproject_hw.utils.AppConstans.TITLE
 import com.example.androidproject_hw.utils.AppConstans.USER_NAME
+import com.example.clswrk_androidprojekt.R
 import com.example.clswrk_androidprojekt.adapter.ItemsAdapter
+import com.example.clswrk_androidprojekt.databinding.FragmentItems1Binding
 import com.example.clswrk_androidprojekt.model.ItemsModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*

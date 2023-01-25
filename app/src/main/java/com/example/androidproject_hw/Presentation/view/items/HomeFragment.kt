@@ -8,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.androidproject_hw.Presentation.view.auth.OnBoardingFragment
-import com.example.androidproject_hw.Presentation.view.auth.OnBoardingPresenter
-import com.example.androidproject_hw.R
-import com.example.androidproject_hw.databinding.FragmentHomeBinding
-import com.example.androidproject_hw.model.UserModel
+import com.example.clswrk_androidprojekt.R
+import com.example.clswrk_androidprojekt.databinding.FragmentHomeBinding
+
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

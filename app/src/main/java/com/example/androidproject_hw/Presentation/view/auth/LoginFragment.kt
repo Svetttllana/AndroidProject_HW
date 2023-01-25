@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.androidproject_hw.Presentation.view.items.DetailsFragment1
-import com.example.androidproject_hw.Presentation.view.items.HomeFragment
-import com.example.androidproject_hw.Presentation.view.items.ItemsFragment1
-import com.example.androidproject_hw.R
-import com.example.androidproject_hw.databinding.FragmentLoginBinding
+import com.example.clswrk_androidprojekt.R
+import com.example.clswrk_androidprojekt.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
