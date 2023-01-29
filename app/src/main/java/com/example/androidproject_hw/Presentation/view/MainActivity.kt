@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(),MainView
 
         navController = navHostFragment.navController
 
-        _binding!!.buttomNavigation.setupWithNavController(navController)
+            //
 
         navController.addOnDestinationChangedListener{ _ , destination, _ ->
 
@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity(),MainView
                 _binding!!.buttomNavigation.visibility = VISIBLE
             }
         }
+        _binding!!.buttomNavigation.setupWithNavController(navController)
     }
 
 

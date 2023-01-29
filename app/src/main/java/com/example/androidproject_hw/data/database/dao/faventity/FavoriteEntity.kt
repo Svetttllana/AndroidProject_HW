@@ -37,5 +37,4 @@ data class FavoriteEntity (
     val lat: String,
     @ColumnInfo("lng")
     val lng: String
-
-        )
+    )

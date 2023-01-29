@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.androidproject_hw.data.database.dao.faventity.FavoriteEntity
 
-@Database(entities = [ItemsEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ItemsEntity::class, FavoriteEntity::class], version = 1, exportSchema = false)
 abstract class ItemsDataBase: RoomDatabase() {
 
     abstract fun getItemsDAO():ItemsDAO
