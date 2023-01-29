@@ -5,4 +5,5 @@
     <string name="imageview_clicked">ImageView clicked</string>
     <string name="LogCantBeEmpty">Login cant be empty</string>
     <string name="PassCantBeEmpty">Password cant be empty</string>
+    <string name="itemsfragment">ITEMS FRAGMENT</string>
 </resources>

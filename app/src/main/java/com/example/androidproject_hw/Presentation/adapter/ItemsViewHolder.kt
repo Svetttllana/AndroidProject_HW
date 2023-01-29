@@ -33,20 +33,16 @@ class ItemsViewHolder(
         viewBinding.tvCatchPhrase.text = "Catch phrase: " + itemsModel.catchPhrase
 
       itemView.setOnClickListener {
+          itemsListener.onElementSelected(
+              itemsModel.name,
+              itemsModel.username,
+              itemsModel.email,
+          itemsModel.id)
 
-            itemsListener.onClick()
         }
 
-
-
-        itemView.setOnClickListener {
-            itemsListener.onElementSelected(
-                itemsModel.name,
-                itemsModel.username,
-                itemsModel.email,
-                itemsModel.id
-            )
-
+        viewBinding.ivFav.setOnClickListener{
+            itemsListener.onFavClicked(itemsModel.id)
         }
 
 

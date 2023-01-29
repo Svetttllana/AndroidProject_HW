@@ -62,11 +62,9 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
 
     }
 
-
     override fun onClick() {
-        itemsPresenter.imageViewClicked()
+        TODO("Not yet implemented")
     }
-
 
     override fun onElementSelected(
         name: String,
@@ -76,6 +74,10 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
     ) {
         itemsPresenter.elementSelected(name,userName, email, id)
 
+    }
+
+    override fun onFavClicked(id: Int) {
+        itemsPresenter.onFavClicked(id)
     }
 
     override fun dataReceived(list: List<ItemsModel>) {

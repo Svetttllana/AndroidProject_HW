@@ -1,4 +1,4 @@
-package com.example.androidproject_hw.data
+package com.example.androidproject_hw.data.database.dao
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

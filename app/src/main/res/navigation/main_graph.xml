@@ -27,4 +27,9 @@
         android:name="com.example.androidproject_hw.Presentation.view.items.DetailsFragment1"
         android:label="fragment_details1"
         tools:layout="@layout/fragment_details1" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.androidproject_hw.Presentation.view.items.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

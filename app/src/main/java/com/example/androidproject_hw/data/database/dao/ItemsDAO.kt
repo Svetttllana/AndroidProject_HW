@@ -2,8 +2,9 @@ package com.example.androidproject_hw.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.androidproject_hw.data.ItemsEntity
+import com.example.androidproject_hw.data.database.dao.faventity.FavoriteEntity
 import com.example.clswrk_androidprojekt.model.ItemsModel
 
 @Dao
@@ -20,5 +21,15 @@ interface ItemsDAO {
     @Query("SELECT (SELECT COUNT(*) FROM ItemsEntity) != 0")
     fun doesItemsEntityExist():Boolean
 
+    @Query("DELETE FROM ItemsEntity WHERE id =:id")
+    fun deleteItemEntityById(id: Int)
 
+    @Query("SELECT * FROM ItemsEntity WHERE id =:id")
+    fun findItemEntityById(id: Int): ItemsEntity
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insetFavoritesEntity(favoritesEntity: FavoriteEntity)
+
+    @Query("SELECT * FROM FavoritesEntity")
+    fun getFavoritesEntities(): List<FavoriteEntity>
 }

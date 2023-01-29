@@ -55,6 +55,20 @@ class ItemsPresenter @Inject constructor(
 
 
     }
+    fun onFavClicked(id: Int){
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val job = launch {
+                    itemsInteractor.onFavClicked(id)
+                }
+                job.join()
+                job.cancel()
+            } catch (e: Exception){
+                Log.w("exception","onFavClicked FAILED")
+            }
+        }
+
+    }
 
     fun imageViewClicked() {
         CoroutineScope(Dispatchers.Main).launch {
@@ -69,10 +83,6 @@ class ItemsPresenter @Inject constructor(
             job.join()
             job.cancel()
         }
-
-
-
-
 
     }
 

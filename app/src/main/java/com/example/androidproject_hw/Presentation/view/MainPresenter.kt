@@ -18,7 +18,7 @@ class MainPresenter @Inject constructor(
             val job = launch {
                 try {
                     mainView = mainActivity
-                }catch (e:Exception){
+                } catch (e: Exception) {
                     Log.w("exeption", " checkUserExists FAILED")
                 }
 
@@ -36,7 +36,7 @@ class MainPresenter @Inject constructor(
                 try {
                     val doesUserExists = authInteractor.checkUserExists()
                     mainView.userExistsResult(doesUserExists)
-                }catch (e:Exception){
+                } catch (e: Exception) {
                     Log.w("exeption", " checkUserExists FAILED")
                 }
 
