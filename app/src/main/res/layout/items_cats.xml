@@ -188,7 +188,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.904"
             app:layout_constraintStart_toEndOf="@+id/tv_company"
-            app:layout_constraintTop_toBottomOf="@+id/tv_catchPhrase" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_catchPhrase"
+            app:layout_constraintVertical_bias="0.144" />
+
+        <ImageView
+            android:id="@+id/iv_Delite"
+            android:layout_width="66dp"
+            android:layout_height="69dp"
+            android:background="@drawable/ic_baseline_delete_24"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toEndOf="@+id/tv_phone"
+            app:layout_constraintTop_toBottomOf="@+id/iv_Fav"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

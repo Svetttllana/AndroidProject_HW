@@ -6,4 +6,5 @@
     <string name="LogCantBeEmpty">Login cant be empty</string>
     <string name="PassCantBeEmpty">Password cant be empty</string>
     <string name="itemsfragment">ITEMS FRAGMENT</string>
+    <string name="delited_item">deleted item</string>
 </resources>

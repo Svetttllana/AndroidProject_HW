@@ -32,4 +32,18 @@ class FavoritePresenter @Inject constructor(
             }
         }
     }
+
+
+    fun deliteFav(id:Int){
+        CoroutineScope(Dispatchers.Main).launch {
+            val job = launch {
+                itemsInteractor.deliteFavById(id)
+            }
+            job.join()
+            job.cancel()
+
+        }
+
+    }
 }
+

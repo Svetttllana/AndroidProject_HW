@@ -71,16 +71,17 @@
         app:layout_constraintVertical_bias="0.177" />
 
 
-
     <Button
         android:id="@+id/btLogout"
         android:layout_width="134dp"
         android:layout_height="53dp"
+        android:layout_marginBottom="204dp"
         android:text="logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.942"
+android:backgroundTint="#B85050"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_catchPhrase"
+        app:layout_constraintVertical_bias="0.856" />
 </androidx.constraintlayout.widget.ConstraintLayout>

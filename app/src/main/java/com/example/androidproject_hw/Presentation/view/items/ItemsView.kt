@@ -14,4 +14,5 @@ interface ItemsView {
                      id: Int
                      )
 
+fun deliteItem(id:Int)
 }

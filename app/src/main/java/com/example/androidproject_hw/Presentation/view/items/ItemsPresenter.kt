@@ -40,16 +40,29 @@ class ItemsPresenter @Inject constructor(
         CoroutineScope(Dispatchers.Main).launch {
             val job = launch {
                 try {
-                    itemsInteractor.getData()
+                    val listItems =  itemsInteractor.showData()
+                    listItems.collect{
+                        itemsView.dataReceived(it)
+                    }
 
-                    itemsView.dataReceived(itemsInteractor.showData())
+
+
                 }catch (e:Exception){
                     Log.w("exeption", " checkOnBoardFragm FAILED")
                 }
 
             }
+            val jobGet = launch {
+                try {
+                   itemsInteractor.getData()
+                }catch (e:Exception){
+                    Log.w("exeption", " checkOnBoardFragm FAILED")
+                }
+            }
             job.join()
+            jobGet.join()
             job.cancel()
+            jobGet.cancel()
         }
 
 
@@ -112,4 +125,15 @@ class ItemsPresenter @Inject constructor(
 
     }
 
+    fun deliteItem(id:Int){
+        CoroutineScope(Dispatchers.Main).launch {
+            val job = launch {
+                itemsInteractor.deliteItemById(id)
+            }
+            job.join()
+            job.cancel()
+
+        }
+
+    }
 }

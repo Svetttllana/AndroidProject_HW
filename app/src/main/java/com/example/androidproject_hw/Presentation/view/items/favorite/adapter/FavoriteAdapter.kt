@@ -3,10 +3,13 @@ package com.example.androidproject_hw.Presentation.view.items.favorite.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidproject_hw.Presentation.view.items.favorite.adapter.listener.FavoriteListener
 import com.example.androidproject_hw.model.FavoriteModel
 import com.example.clswrk_androidprojekt.databinding.ItemsFavoriteBinding
 
-class FavoriteAdapter (): RecyclerView.Adapter<FavoriteViewHolder>() {
+class FavoriteAdapter (
+    private var favoriteListener: FavoriteListener
+        ): RecyclerView.Adapter<FavoriteViewHolder>() {
 
     private var listItems = mutableListOf<FavoriteModel>()
 
@@ -22,7 +25,7 @@ class FavoriteAdapter (): RecyclerView.Adapter<FavoriteViewHolder>() {
             LayoutInflater.from(parent.context),
             parent,
             false)
-        return FavoriteViewHolder(view)
+        return FavoriteViewHolder(view, favoriteListener)
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {

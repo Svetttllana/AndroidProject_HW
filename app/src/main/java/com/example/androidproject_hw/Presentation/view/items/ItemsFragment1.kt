@@ -80,6 +80,10 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
         itemsPresenter.onFavClicked(id)
     }
 
+    override fun onDeliteClicked(id: Int) {
+        itemsPresenter.deliteItem(id)
+    }
+
     override fun dataReceived(list: List<ItemsModel>) {
         itemsAdapter.submitList(list)
     }
@@ -109,6 +113,10 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
         )
 
 
+    }
+
+    override fun deliteItem(id: Int) {
+        Toast.makeText(context, getString(R.string.delited_item), Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -2,12 +2,13 @@ package com.example.androidproject_hw.Presentation.view.items.favorite.adapter
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidproject_hw.Presentation.view.items.favorite.adapter.listener.FavoriteListener
 import com.example.androidproject_hw.model.FavoriteModel
-import com.example.clswrk_androidprojekt.databinding.FragmentFavoriteBinding
 import com.example.clswrk_androidprojekt.databinding.ItemsFavoriteBinding
 
 class FavoriteViewHolder(
-    private val viewBinding: ItemsFavoriteBinding
+    private val viewBinding: ItemsFavoriteBinding,
+    private var favoriteListener: FavoriteListener
 ) : RecyclerView.ViewHolder(viewBinding.root) {
 
     @SuppressLint("SetTextI18n")
@@ -24,5 +25,12 @@ class FavoriteViewHolder(
         viewBinding.tvWebsite.text = "Website " + favItems.website
         viewBinding.tvBs.text = "Business: " + favItems.bs
         viewBinding.tvCatchPhrase.text = "Catch phrase: " + favItems.catchPhrase
+
+        viewBinding.btnDeleteFav.setOnClickListener {
+            favoriteListener.onDeliteClicked(favItems.id)
+        }
+
     }
+
+
 }

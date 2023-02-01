@@ -45,7 +45,9 @@ class ItemsViewHolder(
             itemsListener.onFavClicked(itemsModel.id)
         }
 
-
+viewBinding.ivDelite.setOnClickListener {
+    itemsListener.onDeliteClicked(itemsModel.id)
+}
     }
 
 }

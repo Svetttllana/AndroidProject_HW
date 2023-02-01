@@ -5,15 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidproject_hw.Presentation.view.items.favorite.adapter.FavoriteAdapter
+import com.example.androidproject_hw.Presentation.view.items.favorite.adapter.listener.FavoriteListener
 import com.example.androidproject_hw.model.FavoriteModel
 import com.example.clswrk_androidprojekt.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FavoriteFragment : Fragment(), FavoriteView {
+class FavoriteFragment : Fragment(), FavoriteListener, FavoriteView {
 
     @Inject
     lateinit var favoritesPresenter: FavoritePresenter
@@ -36,15 +38,29 @@ class FavoriteFragment : Fragment(), FavoriteView {
         super.onViewCreated(view, savedInstanceState)
         favoritesPresenter.setView(this)
 
-        favAdapter = FavoriteAdapter()
+        favAdapter = FavoriteAdapter(this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = favAdapter
 
         favoritesPresenter.getFavorites()
+
+        favoritesPresenter.deliteFav(id)
+
+
     }
 
     override fun favReceived(list: List<FavoriteModel>) {
         favAdapter.submitList(list)
     }
+
+    override fun deliteFav(id: Int) {
+        Toast.makeText(context, "deleted favorite", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDeliteClicked(id: Int) {
+        favoritesPresenter.deliteFav(id)
+    }
+
+
 }

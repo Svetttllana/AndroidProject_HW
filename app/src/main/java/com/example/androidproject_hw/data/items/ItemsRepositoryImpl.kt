@@ -8,6 +8,8 @@ import com.example.androidproject_hw.domain.items.ItemsReposetory
 import com.example.androidproject_hw.model.FavoriteModel
 import com.example.clswrk_androidprojekt.model.ItemsModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -52,27 +54,30 @@ class ItemsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun showData(): List<ItemsModel> {
+    override suspend fun showData(): Flow<List<ItemsModel>> {
         return withContext(Dispatchers.IO) {
             val itemsEntity = itemsDAO.getItemsEntity()
-            itemsEntity.map {
-                ItemsModel(
-                    it.id,
-                    it.name,
-                    it.username,
-                    it.phone,
-                    it.email,
-                    it.website,
-                    it.city,
-                    it.zipcode,
-                    it.lat,
-                    it.bs,
-                    it.phone,
-                    it.catchPhrase,
-                    it.lng,
-                    it.nameCompany,
-                    it.street
-                )
+            itemsEntity.map {itemsList ->
+                itemsList.map { item->
+                    ItemsModel(
+                        item.id,
+                        item.name,
+                        item.username,
+                        item.phone,
+                        item.email,
+                        item.website,
+                        item.city,
+                        item.zipcode,
+                        item.lat,
+                        item.bs,
+                        item.phone,
+                        item.catchPhrase,
+                        item.lng,
+                        item.nameCompany,
+                        item.street
+                    )
+                }
+
             }
         }
     }
@@ -107,6 +112,12 @@ class ItemsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun deliteFavById(id: Int) {
+        withContext(Dispatchers.IO){
+            itemsDAO.deleteFavEntityById(id)
+        }
+    }
+
     override suspend fun getFavorites(): List<FavoriteModel> {
         return withContext(Dispatchers.IO) {
             val favoritesEntity = itemsDAO.getFavoritesEntities()
@@ -134,7 +145,8 @@ class ItemsRepositoryImpl @Inject constructor(
     override suspend fun findItemById(id: Int): ItemsModel {
         return withContext(Dispatchers.IO){
             val itemsEntity = itemsDAO.findItemEntityById(id)
-            ItemsModel(itemsEntity.id,
+            ItemsModel(
+                itemsEntity.id,
                 itemsEntity.name,
                 itemsEntity.username,
                 itemsEntity.email,
