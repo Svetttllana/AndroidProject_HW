@@ -16,7 +16,7 @@ interface ItemsDAO {
     fun insertItemsEntity(itemsEntity: ItemsEntity)
 
     @Query("SELECT * From ItemsEntity ")
-    fun getItemsEntity(): Flow<List<ItemsModel>>
+    fun getItemsEntity(): Flow<List<ItemsEntity>>
 
     @Query("SELECT (SELECT COUNT(*) FROM ItemsEntity) != 0")
     fun doesItemsEntityExist(): Boolean
@@ -36,6 +36,9 @@ interface ItemsDAO {
     @Query("SELECT * FROM FavoriteEntity")
     fun getFavoritesEntities(): List<FavoriteEntity>
 
-
+@Insert
+fun insertManagerEntity(managerEntity: ManagerEntity)
+    @Query("SELECT * From ManagerEntity ")
+    fun getManagerEntity(): Flow<List<ManagerEntity>>
 
 }

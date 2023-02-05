@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.androidproject_hw.model.ManagerModel
 import com.example.clswrk_androidprojekt.R
 import com.example.clswrk_androidprojekt.databinding.FragmentHomeBinding
 
@@ -59,6 +60,9 @@ class HomeFragment : Fragment(), HomeView {
 
     }
 
+    override fun managerDataShow(list: List<ManagerModel>) {
+        binding.tvManager.text="${list}"
+    }
 
 
 }

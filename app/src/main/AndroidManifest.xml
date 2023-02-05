@@ -27,7 +27,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+              </activity>
+
+        <provider
+            android:authorities="${applicationId}.androidx-startup"
+            android:name="androidx.startup.InitializationProvider"
+            tools:node = "remove">
+        </provider>
+
     </application>
 
 </manifest>

@@ -36,8 +36,8 @@ class PresentationModule {
 
 
     @Provides
-    fun provideHomePresenter(authInteractor: AuthInteractor): HomePresenter {
-        return HomePresenter(authInteractor)
+    fun provideHomePresenter(authInteractor: AuthInteractor,itemsInteractor: ItemsInteractor): HomePresenter {
+        return HomePresenter(authInteractor,itemsInteractor)
     }
 
     @Provides

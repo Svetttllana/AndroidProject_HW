@@ -1,6 +1,7 @@
 package com.example.androidproject_hw.domain.items
 
 import com.example.androidproject_hw.model.FavoriteModel
+import com.example.androidproject_hw.model.ManagerModel
 import com.example.clswrk_androidprojekt.model.ItemsModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -35,5 +36,9 @@ suspend  fun getData(){
 
     suspend fun deliteFavById(id: Int){
         itemsReposetory.deliteFavById(id)
+    }
+
+    suspend  fun showManagerData(): Flow<List<ManagerModel>> {
+        return itemsReposetory.showManagerData()
     }
 }

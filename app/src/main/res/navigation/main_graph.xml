@@ -32,4 +32,8 @@
         android:name="com.example.androidproject_hw.Presentation.view.items.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.example.androidproject_hw.Presentation.view.items.HomeFragment"
+        android:label="HomeFragment" />
 </navigation>

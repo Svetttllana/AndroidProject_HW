@@ -1,11 +1,14 @@
 package com.example.androidproject_hw.data.items
 
+import androidx.work.Worker
 import com.example.androidproject_hw.data.ApiService
 import com.example.androidproject_hw.data.database.dao.ItemsEntity
 import com.example.androidproject_hw.data.database.dao.ItemsDAO
+import com.example.androidproject_hw.data.database.dao.ManagerEntity
 import com.example.androidproject_hw.data.database.dao.faventity.FavoriteEntity
 import com.example.androidproject_hw.domain.items.ItemsReposetory
 import com.example.androidproject_hw.model.FavoriteModel
+import com.example.androidproject_hw.model.ManagerModel
 import com.example.clswrk_androidprojekt.model.ItemsModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -26,7 +29,7 @@ class ItemsRepositoryImpl @Inject constructor(
 
                 response.body()?.let {
                     it.map {
-                        val itemsEntity = ItemsEntity(
+                        val workerEntity = ManagerEntity(
                             it.id,
                             it.name,
                             it.username,
@@ -45,7 +48,7 @@ class ItemsRepositoryImpl @Inject constructor(
 
                         )
 
-                        itemsDAO.insertItemsEntity(itemsEntity)
+                        itemsDAO.insertManagerEntity(workerEntity)
 
                     }
                 }
@@ -115,6 +118,34 @@ class ItemsRepositoryImpl @Inject constructor(
     override suspend fun deliteFavById(id: Int) {
         withContext(Dispatchers.IO){
             itemsDAO.deleteFavEntityById(id)
+        }
+    }
+
+    override suspend fun showManagerData(): Flow<List<ManagerModel>> {
+        return withContext(Dispatchers.IO){
+            val managerEntity = itemsDAO.getManagerEntity()
+            managerEntity.map{itemsList->
+                itemsList.map{
+                    item->
+                    ManagerModel(
+                        item.id,
+                        item.name,
+                        item.username,
+                        item.phone,
+                        item.email,
+                        item.website,
+                        item.city,
+                        item.zipcode,
+                        item.lat,
+                        item.bs,
+                        item.phone,
+                        item.catchPhrase,
+                        item.lng,
+                        item.nameCompany,
+                        item.street
+                    )
+                }
+            }
         }
     }
 
