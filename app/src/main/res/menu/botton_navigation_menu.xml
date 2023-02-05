@@ -17,8 +17,8 @@
             />
 
     <item
-        android:id="@+id/onBoardingFragment"
-        android:title="ON BOARDING"
+        android:id="@+id/homeFragment2"
+        android:title="HOME"
         android:icon="@drawable/ic_baseline_skip_next_24"
         />
 
