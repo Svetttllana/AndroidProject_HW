@@ -38,4 +38,6 @@ data class ItemsEntity(
     val catchPhrase: String,
     @ColumnInfo ( "bs")
     val bs: String,
+    @ColumnInfo ( "fav")
+    val fav: Boolean
 )

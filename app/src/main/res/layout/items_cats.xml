@@ -183,7 +183,7 @@
             android:id="@+id/iv_Fav"
             android:layout_width="66dp"
             android:layout_height="69dp"
-            android:background="@drawable/ic_baseline_add_favorite"
+            android:background="@drawable/favorite_selected_backhround"
             app:layout_constraintBottom_toTopOf="@+id/tv_bs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.904"

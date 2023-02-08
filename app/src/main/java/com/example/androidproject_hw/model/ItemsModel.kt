@@ -19,6 +19,7 @@ data class ItemsModel(
     val website: String,
       val nameCompany: String,
     val catchPhrase: String,
-    val bs: String
+    val bs: String,
+    val fav:Boolean
 
 )

@@ -16,4 +16,5 @@ data class FavoriteModel(
     val bs: String,
     val lat: String,
     val lng: String,
+    val fav:Boolean
 )

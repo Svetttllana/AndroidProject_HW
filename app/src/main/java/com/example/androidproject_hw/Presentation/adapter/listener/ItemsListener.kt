@@ -9,4 +9,6 @@ interface ItemsListener {
     fun onFavClicked(id: Int)
 
     fun onDeliteClicked(id: Int)
+
+    fun updateFavorite(fav: Boolean, id: Int)
 }

@@ -36,6 +36,9 @@ interface ItemsDAO {
     @Query("SELECT * FROM FavoriteEntity")
     fun getFavoritesEntities(): List<FavoriteEntity>
 
+    @Query("UPDATE ItemsEntity SET fav=:fav WHERE id =:id")
+    fun updateFav(fav:Boolean,id:Int)
+
 
 
 }

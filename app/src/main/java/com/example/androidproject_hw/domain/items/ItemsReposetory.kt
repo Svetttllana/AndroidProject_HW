@@ -19,4 +19,6 @@ interface ItemsReposetory {
   suspend fun deleteItemById(id: Int)
 
   suspend fun deliteFavById(id: Int)
+
+  suspend fun updateFav(fav:Boolean,id:Int)
 }

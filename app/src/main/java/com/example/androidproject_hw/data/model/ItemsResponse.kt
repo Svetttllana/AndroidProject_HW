@@ -11,7 +11,8 @@ val email: String,
 val address: Address,
 val phone: String,
 val website: String,
-val company: Company
+val company: Company,
+val fav:Boolean
 )
 
 data class Address(

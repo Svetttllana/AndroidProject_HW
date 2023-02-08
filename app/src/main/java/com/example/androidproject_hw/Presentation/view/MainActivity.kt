@@ -16,14 +16,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(),MainView
-//    NavController.OnDestinationChangedListener
+class MainActivity : AppCompatActivity(),MainView,
+    NavController.OnDestinationChangedListener
 {
 
     private var _binding: ActivityMain2Binding? = null
 
     lateinit var navController: NavController
     lateinit var navHostFragment: NavHostFragment
+
     @Inject
 
     lateinit var mainPresenter: MainPresenter
@@ -43,11 +44,11 @@ class MainActivity : AppCompatActivity(),MainView
 
         navController = navHostFragment.navController
 
-            //
+        //
 
-        navController.addOnDestinationChangedListener{ _ , destination, _ ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
 
-            if(destination.id == R.id.loginFragment) {
+            if (destination.id == R.id.loginFragment) {
                 _binding!!.buttomNavigation.visibility = GONE
             } else {
                 _binding!!.buttomNavigation.visibility = VISIBLE
@@ -66,15 +67,18 @@ class MainActivity : AppCompatActivity(),MainView
 
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        navController.removeOnDestinationChangedListener(this)
-//    }
-//
-//    override fun onDestinationChanged(
-//        controller: NavController,
-//        destination: NavDestination,
-//        arguments: Bundle?
-//    ) {
-//
-   }
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        navController.removeOnDestinationChangedListener(this)
+    }
+
+
+}

@@ -36,4 +36,8 @@ suspend  fun getData(){
     suspend fun deliteFavById(id: Int){
         itemsReposetory.deliteFavById(id)
     }
+
+    suspend fun updateFav(fav:Boolean,id:Int){
+        itemsReposetory.updateFav(fav,id)
+    }
 }

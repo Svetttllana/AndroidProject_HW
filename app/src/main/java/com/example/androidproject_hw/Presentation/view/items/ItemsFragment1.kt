@@ -84,6 +84,10 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
         itemsPresenter.deliteItem(id)
     }
 
+    override fun updateFavorite(fav: Boolean, id: Int) {
+        TODO("Not yet implemented")
+    }
+
     override fun dataReceived(list: List<ItemsModel>) {
         itemsAdapter.submitList(list)
     }

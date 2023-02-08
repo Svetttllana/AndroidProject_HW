@@ -42,8 +42,9 @@ class ItemsRepositoryImpl @Inject constructor(
                             it.company.catchPhrase,
                             it.company.bs,
                             it.address.geo.lat,
+                            it.fav
 
-                        )
+                            )
 
                         itemsDAO.insertItemsEntity(itemsEntity)
 
@@ -57,8 +58,8 @@ class ItemsRepositoryImpl @Inject constructor(
     override suspend fun showData(): Flow<List<ItemsModel>> {
         return withContext(Dispatchers.IO) {
             val itemsEntity = itemsDAO.getItemsEntity()
-            itemsEntity.map {itemsList ->
-                itemsList.map { item->
+            itemsEntity.map { itemsList ->
+                itemsList.map { item ->
                     ItemsModel(
                         item.id,
                         item.name,
@@ -74,7 +75,8 @@ class ItemsRepositoryImpl @Inject constructor(
                         item.catchPhrase,
                         item.lng,
                         item.nameCompany,
-                        item.street
+                        item.street,
+                        item.fav
                     )
                 }
 
@@ -83,7 +85,7 @@ class ItemsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun favClicked(itemsModel: ItemsModel) {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             itemsDAO.insetFavoritesEntity(
                 FavoriteEntity(
                     itemsModel.id,
@@ -100,28 +102,36 @@ class ItemsRepositoryImpl @Inject constructor(
                     itemsModel.catchPhrase,
                     itemsModel.bs,
                     itemsModel.lat,
-                    itemsModel.lng
+                    itemsModel.lng,
+                    itemsModel.fav
+
                 )
             )
         }
     }
 
     override suspend fun deleteItemById(id: Int) {
-        withContext(Dispatchers.IO){
+        withContext(Dispatchers.IO) {
             itemsDAO.deleteItemEntityById(id)
         }
     }
 
     override suspend fun deliteFavById(id: Int) {
-        withContext(Dispatchers.IO){
+        withContext(Dispatchers.IO) {
             itemsDAO.deleteFavEntityById(id)
+        }
+    }
+
+    override suspend fun updateFav(fav: Boolean, id: Int) {
+        return withContext(Dispatchers.IO){
+            itemsDAO.updateFav(fav, id)
         }
     }
 
     override suspend fun getFavorites(): List<FavoriteModel> {
         return withContext(Dispatchers.IO) {
             val favoritesEntity = itemsDAO.getFavoritesEntities()
-            favoritesEntity.map{
+            favoritesEntity.map {
                 FavoriteModel(
                     it.id,
                     it.name,
@@ -137,13 +147,15 @@ class ItemsRepositoryImpl @Inject constructor(
                     it.catchPhrase,
                     it.bs,
                     it.lat,
-                    it.lng)
+                    it.lng,
+                    it.fav
+                )
             }
         }
     }
 
     override suspend fun findItemById(id: Int): ItemsModel {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             val itemsEntity = itemsDAO.findItemEntityById(id)
             ItemsModel(
                 itemsEntity.id,
@@ -160,7 +172,9 @@ class ItemsRepositoryImpl @Inject constructor(
                 itemsEntity.catchPhrase,
                 itemsEntity.bs,
                 itemsEntity.lat,
-                itemsEntity.lng)
+                itemsEntity.lng,
+                itemsEntity.fav
+            )
         }
     }
 }
