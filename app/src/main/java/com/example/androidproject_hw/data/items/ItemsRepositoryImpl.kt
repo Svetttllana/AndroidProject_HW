@@ -84,8 +84,10 @@ class ItemsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun favClicked(itemsModel: ItemsModel) {
+    override suspend fun favClicked(itemsModel: ItemsModel, fav: Boolean) {
         return withContext(Dispatchers.IO) {
+            itemsDAO.addToFav(itemsModel.id,fav)
+
             itemsDAO.insetFavoritesEntity(
                 FavoriteEntity(
                     itemsModel.id,
@@ -105,6 +107,7 @@ class ItemsRepositoryImpl @Inject constructor(
                     itemsModel.lng,
                     itemsModel.fav
 
+
                 )
             )
         }
@@ -122,11 +125,6 @@ class ItemsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun updateFav(fav: Boolean, id: Int) {
-        return withContext(Dispatchers.IO){
-            itemsDAO.updateFav(fav, id)
-        }
-    }
 
     override suspend fun getFavorites(): List<FavoriteModel> {
         return withContext(Dispatchers.IO) {
@@ -173,7 +171,7 @@ class ItemsRepositoryImpl @Inject constructor(
                 itemsEntity.bs,
                 itemsEntity.lat,
                 itemsEntity.lng,
-                itemsEntity.fav
+               itemsEntity.fav?:false
             )
         }
     }

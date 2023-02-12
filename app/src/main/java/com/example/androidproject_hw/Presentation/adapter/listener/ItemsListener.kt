@@ -6,7 +6,7 @@ interface ItemsListener {
 
     fun onElementSelected(name: String, userName: String, email: String, id: Int)
 
-    fun onFavClicked(id: Int)
+    fun onFavClicked(id: Int,fav: Boolean)
 
     fun onDeliteClicked(id: Int)
 

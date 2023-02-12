@@ -20,9 +20,9 @@ suspend  fun getData(){
         return itemsReposetory.findItemById(id)
     }
 
-    suspend fun onFavClicked(id: Int){
+    suspend fun onFavClicked(id: Int,fav: Boolean){
         val foundItem = findItemById(id)
-        itemsReposetory.favClicked(foundItem)
+        itemsReposetory.favClicked(foundItem,fav)
     }
 
     suspend fun getFavorites(): List<FavoriteModel>{
@@ -37,7 +37,5 @@ suspend  fun getData(){
         itemsReposetory.deliteFavById(id)
     }
 
-    suspend fun updateFav(fav:Boolean,id:Int){
-        itemsReposetory.updateFav(fav,id)
-    }
+
 }

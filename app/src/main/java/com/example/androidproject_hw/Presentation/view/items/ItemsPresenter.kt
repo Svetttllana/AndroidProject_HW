@@ -68,11 +68,11 @@ class ItemsPresenter @Inject constructor(
 
 
     }
-    fun onFavClicked(id: Int){
+    fun onFavClicked(id: Int,fav: Boolean){
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val job = launch {
-                    itemsInteractor.onFavClicked(id)
+                    itemsInteractor.onFavClicked(id,fav)
                 }
                 job.join()
                 job.cancel()

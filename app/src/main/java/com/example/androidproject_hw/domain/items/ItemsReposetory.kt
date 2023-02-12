@@ -10,7 +10,7 @@ interface ItemsReposetory {
 
   suspend fun showData(): Flow<List<ItemsModel>>
 
-  suspend fun favClicked(itemsModel: ItemsModel)
+  suspend fun favClicked(itemsModel: ItemsModel,fav: Boolean)
 
   suspend fun getFavorites(): List<FavoriteModel>
 
@@ -20,5 +20,5 @@ interface ItemsReposetory {
 
   suspend fun deliteFavById(id: Int)
 
-  suspend fun updateFav(fav:Boolean,id:Int)
+
 }

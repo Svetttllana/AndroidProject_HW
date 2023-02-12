@@ -40,10 +40,10 @@ class ItemsViewHolder(
           itemsModel.id)
 
         }
-
+viewBinding.ivFav.isSelected = itemsModel.fav
         viewBinding.ivFav.setOnClickListener{
-            viewBinding.ivFav.isSelected = !it.isPressed
-            itemsListener.onFavClicked(itemsModel.id)
+         // viewBinding.ivFav.isSelected = !it.isSelected
+            itemsListener.onFavClicked(itemsModel.id,it.isSelected)
         }
 
 viewBinding.ivDelite.setOnClickListener {

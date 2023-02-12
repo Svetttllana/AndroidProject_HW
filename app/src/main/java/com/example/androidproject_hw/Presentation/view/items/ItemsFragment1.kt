@@ -71,8 +71,8 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
 
     }
 
-    override fun onFavClicked(id: Int) {
-        itemsPresenter.onFavClicked(id)
+    override fun onFavClicked(id: Int,fav: Boolean) {
+        itemsPresenter.onFavClicked(id,fav)
     }
 
     override fun onDeliteClicked(id: Int) {

@@ -17,7 +17,7 @@ data class ItemsModel(
     val lng: String,
     val phone: String,
     val website: String,
-      val nameCompany: String,
+    val nameCompany: String,
     val catchPhrase: String,
     val bs: String,
     val fav:Boolean

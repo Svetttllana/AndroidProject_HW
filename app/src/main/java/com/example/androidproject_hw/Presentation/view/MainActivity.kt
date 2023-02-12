@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity(),MainView,
     lateinit var navHostFragment: NavHostFragment
 
     @Inject
-
     lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {

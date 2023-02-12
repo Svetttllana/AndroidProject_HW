@@ -39,5 +39,5 @@ data class ItemsEntity(
     @ColumnInfo ( "bs")
     val bs: String,
     @ColumnInfo ( "fav")
-    val fav: Boolean
+    val fav: Boolean?=false
 )
