@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.androidproject_hw.App
 import com.example.clswrk_androidprojekt.R
 import com.example.clswrk_androidprojekt.databinding.ActivityMain2Binding
 import javax.inject.Inject
@@ -18,16 +19,18 @@ class MainActivity : AppCompatActivity(),MainView,
     NavController.OnDestinationChangedListener
 {
 
-    private var _binding: ActivityMain2Binding? = null
+    private  var _binding: ActivityMain2Binding?=null
+    @Inject
+    lateinit var mainPresenter: MainPresenter
 
     lateinit var navController: NavController
     lateinit var navHostFragment: NavHostFragment
 
-    @Inject
-    lateinit var mainPresenter: MainPresenter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (applicationContext as App).provideAppComponent().inject(this)
         _binding = ActivityMain2Binding.inflate(LayoutInflater.from(this))
 
         setContentView(_binding!!.root)
@@ -40,8 +43,6 @@ class MainActivity : AppCompatActivity(),MainView,
         ) as NavHostFragment
 
         navController = navHostFragment.navController
-
-        //
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
