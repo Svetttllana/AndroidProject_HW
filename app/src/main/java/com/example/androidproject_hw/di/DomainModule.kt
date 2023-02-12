@@ -6,11 +6,9 @@ import com.example.androidproject_hw.domain.items.ItemsInteractor
 import com.example.androidproject_hw.domain.items.ItemsReposetory
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
+
 class DomainModule {
 
     @Provides

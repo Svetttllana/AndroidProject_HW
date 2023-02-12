@@ -5,22 +5,18 @@ import android.content.Context.MODE_PRIVATE
 import com.example.androidproject_hw.data.ApiService
 import com.example.androidproject_hw.data.auth.AuthRepositoryImpl
 import com.example.androidproject_hw.data.items.ItemsRepositoryImpl
+import com.example.androidproject_hw.data.sgaredPrefs.SharedPreferencesHelper
 import com.example.androidproject_hw.domain.auth.AuthRepository
 import com.example.androidproject_hw.domain.items.ItemsReposetory
-import com.example.androidproject_hw.data.sgaredPrefs.SharedPreferencesHelper
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 
 @Module
-@InstallIn(SingletonComponent::class)
+
 abstract class DataModule {
 
     @Binds
@@ -43,7 +39,7 @@ abstract class DataModule {
         @Provides
 
         fun provideSharedPreferences(
-            @ApplicationContext context: Context
+           context: Context
         ): SharedPreferencesHelper {
             return SharedPreferencesHelper(
 

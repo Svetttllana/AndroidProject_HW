@@ -1,20 +1,17 @@
 package com.example.androidproject_hw.Presentation.view.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.clswrk_androidprojekt.R
 import com.example.clswrk_androidprojekt.databinding.FragmentOnBoardingBinding
-
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 const val ON_BOARDING = "ON_BOARDING"
 
-@AndroidEntryPoint
 
 class OnBoardingFragment : Fragment(), OnBoardingView {
 

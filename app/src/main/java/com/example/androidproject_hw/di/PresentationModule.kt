@@ -8,13 +8,11 @@ import com.example.androidproject_hw.Presentation.view.items.HomePresenter
 import com.example.androidproject_hw.Presentation.view.items.ItemsPresenter
 import com.example.androidproject_hw.domain.auth.AuthInteractor
 import com.example.androidproject_hw.domain.items.ItemsInteractor
-import dagger.Module;
-import dagger.Provides;
-import dagger.hilt.InstallIn;
-import dagger.hilt.components.SingletonComponent;
+import dagger.Module
+import dagger.Provides
 
 @Module
-@InstallIn(SingletonComponent::class)
+
 
 class PresentationModule {
 
