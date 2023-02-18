@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.androidproject_hw.App
 import com.example.androidproject_hw.Presentation.adapter.listener.ItemsListener
 import com.example.androidproject_hw.utils.AppConstans.EMAIL
 import com.example.androidproject_hw.utils.AppConstans.ID
@@ -44,7 +45,7 @@ class ItemsFragment1 : Fragment(), ItemsListener, ItemsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity().applicationContext as App).provideAppComponent().inject(this)
         itemsPresenter.setVIew(this)
 
         itemsAdapter = ItemsAdapter(this)

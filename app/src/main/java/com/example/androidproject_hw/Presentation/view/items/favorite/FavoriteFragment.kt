@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.androidproject_hw.App
 import com.example.androidproject_hw.Presentation.view.items.favorite.adapter.FavoriteAdapter
 import com.example.androidproject_hw.Presentation.view.items.favorite.adapter.listener.FavoriteListener
 import com.example.androidproject_hw.model.FavoriteModel
@@ -34,6 +35,7 @@ class FavoriteFragment : Fragment(), FavoriteListener, FavoriteView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity().applicationContext as App).provideAppComponent().inject(this)
         favoritesPresenter.setView(this)
 
         favAdapter = FavoriteAdapter(this)

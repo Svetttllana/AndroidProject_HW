@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.androidproject_hw.App
 import com.example.clswrk_androidprojekt.R
 import com.example.clswrk_androidprojekt.databinding.FragmentHomeBinding
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class HomeFragment : Fragment(), HomeView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity().applicationContext as App).provideAppComponent().inject(this)
 
 
         homePresenter.setView(this)

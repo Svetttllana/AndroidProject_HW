@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.androidproject_hw.App
 import com.example.androidproject_hw.utils.AppConstans.EMAIL
 import com.example.androidproject_hw.utils.AppConstans.NAME
 import com.example.androidproject_hw.utils.AppConstans.USER_NAME
@@ -34,7 +35,7 @@ class DetailsFragment1 : Fragment(), DetailsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity().applicationContext as App).provideAppComponent().inject(this)
 
         detailsPresenter.setView(this)
 
